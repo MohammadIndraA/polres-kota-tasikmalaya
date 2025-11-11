@@ -8,6 +8,7 @@ use App\Http\Requests\MenuProfileRequest;
 use App\Services\MenuProfileService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class MenuProfileController extends Controller
 {
@@ -24,8 +25,8 @@ class MenuProfileController extends Controller
          $menuProfil = $this->menuProfilService->getAllMenuProfiles();
         return DataTables::of($menuProfil)
             ->addIndexColumn()
-           ->editColumn('content', function ($row) {
-                return $row->content;
+            ->editColumn('content', function ($row) {
+                 return Str::limit(strip_tags($row->content), 100); // 100 karakter, tanpa tag HTML
             })
            ->editColumn('image', function($row) {
                 if ($row->image) {

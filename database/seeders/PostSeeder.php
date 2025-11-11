@@ -19,51 +19,46 @@ class PostSeeder extends Seeder
         $userIds = DB::table('users')->pluck('id')->toArray();
         $categoryIds = DB::table('categories')->pluck('id')->toArray();
 
-        // Seeder untuk Posts
-        $posts = [
-            [
-                'title' => 'Apel Pagi Bersama Anggota Polsek',
-                'slug' => 'apel-pagi-bersama-anggota-polsek',
-                'content' => '<p>Hari ini, seluruh anggota Polsek mengikuti apel pagi yang dipimpin langsung oleh Kapolsek. Apel ini bertujuan untuk mengevaluasi kinerja harian dan memberikan arahan terkini.</p>',
-                'excerpt' => 'Apel pagi rutin dilaksanakan setiap hari Senin.',
-                'status' => 'published',
-                'published_at' => now(),
-            ],
-            [
-                'title' => 'Operasi Zebra 2025 Dimulai',
-                'slug' => 'operasi-zebra-2025-dimulai',
-                'content' => '<p>Polsek meluncurkan Operasi Zebra 2025 untuk meningkatkan disiplin berlalu lintas di wilayah hukum kami.</p>',
-                'excerpt' => 'Operasi Zebra digelar selama 14 hari mulai 10 November 2025.',
-                'status' => 'published',
-                'published_at' => now()->subDays(2),
-            ],
-            [
-                'title' => 'Sosialisasi Anti Narkoba di Sekolah Menengah',
-                'slug' => 'sosialisasi-anti-narkoba-di-sekolah',
-                'content' => '<p>Tim BNN bekerja sama dengan Polsek menggelar sosialisasi bahaya narkoba kepada siswa SMA Negeri 1.</p>',
-                'excerpt' => 'Kegiatan edukasi anti narkoba sukses digelar di SMA Negeri 1.',
-                'status' => 'published',
-                'published_at' => now()->subDays(5),
-            ],
-            [
-                'title' => 'Draf Laporan Mingguan Keamanan',
-                'slug' => 'draft-laporan-mingguan-keamanan',
-                'content' => '<p>Laporan keamanan mingguan masih dalam tahap penyusunan.</p>',
-                'excerpt' => 'Laporan dalam draft.',
-                'status' => 'draft',
-                'published_at' => null,
-            ],
+      $titles = [
+            'Upacara Hari Pahlawan di Polres',
+            'Pelayanan SKCK Kini Lebih Cepat',
+            'Polres Gelar Operasi Pekat',
+            'Tips Aman Berkendara di Musim Hujan',
+            'Polres Tasikmalaya Rangkul Komunitas Motor',
+            'Sosialisasi Bahaya Narkoba di Sekolah',
+            'Pelayanan SIM Keliling Kembali Dibuka',
+            'Polres Luncurkan Aplikasi Layanan Publik',
+            'Kegiatan Jumat Curhat Bersama Warga',
+            'Polres Buka Posko Pengaduan Masyarakat',
+            'Polisi Cilik Ikuti Pelatihan Lalu Lintas',
+            'Polres Tasikmalaya Gelar Donor Darah',
+            'Peringatan HUT Bhayangkara ke-78',
+            'Polres Edukasi Etika Berlalu Lintas',
+            'Polres dan TNI Gelar Patroli Gabungan',
+            'Polres Adakan Lomba Poster Anti Narkoba',
+            'Kampanye Keselamatan Jalan Raya',
+            'Polres Bantu Evakuasi Banjir di Cigalontang',
+            'Polres Hadir di Tengah Masyarakat',
+            'Polres Tasikmalaya Dukung UMKM Lokal',
         ];
 
-        foreach ($posts as &$post) {
-            $post['id'] = Str::uuid();
-            $post['user_id'] = $userIds[array_rand($userIds)];
-            $post['category_id'] = $categoryIds[array_rand($categoryIds)];
-            $post['views'] = rand(10, 500);
-            $post['created_at'] = now();
-            $post['updated_at'] = now();
+        foreach ($titles as $title) {
+            $slug = Str::slug($title);
+            DB::table('posts')->insert([
+                'id' => Str::uuid(),
+                'title' => $title,
+                'slug' => $slug,
+                'content' => 'Ini adalah konten lengkap dari artikel berjudul "' . $title . '". Artikel ini membahas informasi penting terkait kegiatan, pelayanan, atau edukasi yang dilakukan oleh Polres Kota Tasikmalaya.',
+                'excerpt' => 'Ringkasan dari artikel "' . $title . '" yang memberikan gambaran umum isi konten.',
+                'user_id' => $userIds[array_rand($userIds)], // bisa diisi UUID user jika tersedia
+                'category_id' => $categoryIds[array_rand($categoryIds)], // bisa diisi UUID kategori jika tersedia
+                'image' => $slug . '.jpg',
+                'status' => 'published',
+                'views' => rand(10, 500),
+                'published_at' => now()->subDays(rand(1, 30)),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
-
-        DB::table('posts')->insert($posts);
     }
 }

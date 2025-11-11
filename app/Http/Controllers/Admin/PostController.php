@@ -8,6 +8,7 @@ use App\Http\Requests\PostRequest;
 use App\Models\Categories;
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class PostController extends Controller
@@ -29,7 +30,7 @@ class PostController extends Controller
                    return $row->category->name;
             })
              ->editColumn('content', function ($row) {
-                return $row->content;
+                 return Str::limit(strip_tags($row->content), 100); // 100 karakter, tanpa tag HTML
             })
            ->editColumn('image', function($row) {
                 if ($row->image) {

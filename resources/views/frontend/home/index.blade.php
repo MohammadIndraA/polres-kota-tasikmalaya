@@ -9,95 +9,20 @@
                 <!-- SLIDE  -->
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
                     <!-- MAIN IMAGE -->
-                    <img src="{{ asset('frontend/upload/shutterstock_178724276.jpg') }}" alt="shutterstock_178724276"
-                        data-bgposition="right top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption brad-heading sfb tp-resizeme" data-x="25" data-y="center" data-voffset="-70"
-                        data-speed="500" data-start="500" data-easing="Power3.easeInOut" data-splitin="none"
-                        data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
-                        It is so easy and Fun to
-                        <br /> create Stunning Websites
-                    </div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption brad-sub-heading sfb tp-resizeme" data-x="25" data-y="center"
-                        data-voffset="20" data-speed="500" data-start="1000" data-easing="Power3.easeInOut"
-                        data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                        data-endspeed="300" style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
-                        Clean , Creative and Powerful Multipurpose Theme For Wordpress
-                    </div>
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption brad-buttons sfb tp-resizeme" data-x="18" data-y="center" data-voffset="105"
-                        data-speed="500" data-start="1500" data-easing="Power3.easeInOut" data-splitin="none"
-                        data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
-                        <a href="#" class="button button_large button_green">Buy This Now</a><a href="#"
-                            class="button button_large button_alternate">Read More</a>
-                    </div>
-                </li>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{ asset('frontend/upload/shutterstock_221639593.jpg') }}" alt="shutterstock_221639593"
-                        data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption brad-heading-white sfb tp-resizeme" data-x="25" data-y="center"
-                        data-voffset="-75" data-speed="500" data-start="500" data-easing="Power3.easeInOut"
-                        data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                        data-endspeed="300" style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
-                        It is so easy and Fun to
-                        <br /> create Stunning Websites
-                    </div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption brad-sub-heading-white sfb tp-resizeme" data-x="25" data-y="center"
-                        data-voffset="10" data-speed="500" data-start="1000" data-easing="Power3.easeInOut"
-                        data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                        data-endspeed="300" style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
-                        Clean , Creative and Powerful Multipurpose Theme For Wordpress
-                    </div>
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption brad-buttons sfb tp-resizeme" data-x="18" data-y="center" data-voffset="98"
-                        data-speed="500" data-start="1500" data-easing="Power3.easeInOut" data-splitin="none"
-                        data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
-                        <a href="#" class="button button_large button_green">Buy This Now</a><a href="#"
-                            class="button button_large button_alternatewhite">Read More</a>
-                    </div>
-                </li>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{ asset('frontend/upload/shutterstock_202832599.jpg') }}" alt="shutterstock_202832599"
-                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption brad-heading-right sfb tp-resizeme" data-x="right" data-hoffset="-25"
-                        data-y="center" data-voffset="-85" data-speed="500" data-start="500"
-                        data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1"
-                        data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
-                        It is so easy and Fun to
-                        <br /> create Stunning Websites
-                    </div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption brad-sub-heading sfb tp-resizeme" data-x="right" data-hoffset="-25"
-                        data-y="center" data-voffset="0" data-speed="500" data-start="1000"
-                        data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1"
-                        data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
-                        Clean , Creative and Powerful Multipurpose Theme For Wordpress
-                    </div>
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption brad-buttons sfb tp-resizeme" data-x="right" data-hoffset="-18"
-                        data-y="center" data-voffset="85" data-speed="500" data-start="1500"
-                        data-easing="Power2.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1"
-                        data-endelementdelay="0.1" data-endspeed="300"
-                        style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
-                        <a href="#" class="button button_large button_green">Buy This Now</a><a href="#"
-                            class="button button_large button_alternate">Read More</a>
-                    </div>
+                    @foreach ($banners as $item)
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="shutterstock_178724276"
+                            data-bgposition="right top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption brad-heading sfb tp-resizeme" data-x="25" data-y="center"
+                            data-voffset="-70" data-speed="500" data-start="500" data-easing="Power3.easeInOut"
+                            data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
+                            data-endspeed="300" style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
+                            {!! $item->name !!}
+                        </div>
+                    @endforeach
+
                 </li>
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;">
@@ -123,90 +48,45 @@
                                 <div id="feature_boxes_container_1753603451" class="clearfix">
                                     <div id="feature_boxes_1"
                                         class="row-fluid style1 background-shadow-no feature_boxes box-style3 enable-hr-no element-vpadding- hr-type-tiny hr-color-default hr-style-style1 ex-large-size element-inner-vertical-padding-medium element-inner-horizental-padding-medium icon-side-left iconbox-style3 align-content-center-yes align-icon-center-yes columns-4 crease-background-no content-box default element-padding-medium ">
-                                        <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
-                                                <div class="feature_box ">
-                                                    <span class="brad-icon " data-animation-delay="0"
-                                                        data-animation-effect=""><i class="fa-icon_laptop"></i></span>
-                                                    <div class="heading">
-                                                        <div class="heading-content">
-                                                            <h4>Ultra Responsive Layout</h4>
+
+                                        {{-- item higligt --}}
+                                        @php
+                                            $icons = [
+                                                'fa-solid fa-laptop',
+                                                'fa-solid fa-user',
+                                                'fa-solid fa-shield',
+                                                'fa-icon_globe-2',
+                                                'fa-icon_briefcase',
+                                            ];
+                                        @endphp
+                                        @foreach ($pelayanan_publik->take(4) as $item)
+                                            @php
+                                                $randomIcon = $icons[array_rand($icons)];
+                                            @endphp
+                                            <div class="span">
+                                                <div class="inner-content " data-animation-delay="0"
+                                                    data-animation-effect="">
+                                                    <div class="feature_box ">
+                                                        <span class="brad-icon " data-animation-delay="0"
+                                                            data-animation-effect=""><i
+                                                                class="{{ $randomIcon }}"></i></span>
+                                                        <div class="heading">
+                                                            <div class="heading-content">
+                                                                <h4>{{ $item->name }}</h4>
+                                                            </div>
+                                                            <div class="hr">
+                                                                <span></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="hr">
-                                                            <span></span>
+                                                        <div class="feature-content">
+                                                            {{ strlen(strip_tags($item->content)) > 100 ? substr(strip_tags($item->content), 0, 100) . '...' : strip_tags($item->content) }}
+
                                                         </div>
-                                                    </div>
-                                                    <div class="feature-content">
-                                                        The languages only differ in their grammar, their pronunciation
-                                                        and their most common words.
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
-                                                <div class="feature_box ">
-                                                    <span class="brad-icon " data-animation-delay="0"
-                                                        data-animation-effect=""><i class="fa-icon_cone_alt"></i></span>
-                                                    <div class="heading">
-                                                        <div class="heading-content">
-                                                            <h4>Tons of Shortcodes</h4>
-                                                        </div>
-                                                        <div class="hr">
-                                                            <span></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feature-content">
-                                                        The languages only differ in their grammar, their pronunciation
-                                                        and their most common words.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
-                                                <div class="feature_box ">
-                                                    <span class="brad-icon " data-animation-delay="0"
-                                                        data-animation-effect=""><i class="fa-icon_briefcase"></i></span>
-                                                    <div class="heading">
-                                                        <div class="heading-content">
-                                                            <h4>Packed with Features</h4>
-                                                        </div>
-                                                        <div class="hr">
-                                                            <span></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feature-content">
-                                                        The languages only differ in their grammar, their pronunciation
-                                                        and their most common words.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
-                                                <div class="feature_box ">
-                                                    <span class="brad-icon " data-animation-delay="0"
-                                                        data-animation-effect=""><i class="fa-icon_globe-2"></i></span>
-                                                    <div class="heading">
-                                                        <div class="heading-content">
-                                                            <h4>Out of Box Solution</h4>
-                                                        </div>
-                                                        <div class="hr">
-                                                            <span></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feature-content">
-                                                        The languages only differ in their grammar, their pronunciation
-                                                        and their most common words.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                             </div>
@@ -229,10 +109,10 @@
                                 <div class="column-text ">
                                 </div>
                                 <h5 class="title textcenter default bw-2px dh-2px divider-dark bc-dark dw-default color-default"
-                                    id="h5_c1fb_0"><span>Here are some of the</span>
+                                    id="h5_c1fb_0"><span>POLRES KOTA TASIKMALAYA</span>
                                 </h5>
                                 <h1 class="title textcenter default bw-defaultpx dh-defaultpx divider-dark bc-default dw-default color-default"
-                                    id="h1_c1fb_0"><span> Core Features of the Aperio</span>
+                                    id="h1_c1fb_0"><span> Melayani dengan Hati Nurani</span>
                                 </h1>
                                 <div class="hr border-small dh-2px aligncenter hr-border-primary" id="div_c1fb_5">
                                     <span></span>
@@ -241,14 +121,14 @@
                                     <div id="feature_boxes_2"
                                         class="row-fluid style1 background-shadow-no feature_boxes box-style1 enable-hr-no element-vpadding-medium2 hr-type-tiny hr-color-light hr-style-2px large-size element-inner-vertical-padding-medium element-inner-horizental-padding-medium icon-side-left iconbox-style2 align-content-center-no align-icon-center-no columns-2 crease-background-no content-box default element-padding-medium ">
                                         <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
+                                            <div class="inner-content " data-animation-delay="0" data-animation-effect="">
                                                 <div class="feature_box no-content">
                                                     <span class="brad-icon " data-animation-delay="0"
                                                         data-animation-effect=""><i class="fa-icon_mobile"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Ultra responsive layout so display best on all screens
+                                                            <h6>Mengayomi, melindungi, dan merangkul seluruh lapisan
+                                                                masyarakat
                                                             </h6>
                                                         </div>
                                                         <div class="hr">
@@ -259,14 +139,13 @@
                                             </div>
                                         </div>
                                         <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
+                                            <div class="inner-content " data-animation-delay="0" data-animation-effect="">
                                                 <div class="feature_box no-content">
                                                     <span class="brad-icon " data-animation-delay="0"
                                                         data-animation-effect=""><i class="fa-icon_cog"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Hundreds of options and variations to configure</h6>
+                                                            <h6>Menegakkan hukum secara adil dan berimbang</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -284,7 +163,7 @@
                                                             class="fa-icon_lightbulb_alt"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Fully out of the box solution for web</h6>
+                                                            <h6>Siap melayani dengan hati nurani</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -302,7 +181,7 @@
                                                             class="fa-icon_adjust-vert"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>DrHundreds of options and tons of shortcodes</h6>
+                                                            <h6>Menjaga keamanan dan ketertiban bersama rakyat</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -319,7 +198,7 @@
                                                         data-animation-effect=""><i class="fa-icon_lifesaver"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Multi Portfolio Layout Options</h6>
+                                                            <h6>Bertindak tegas, cepat, dan terukur</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -336,7 +215,7 @@
                                                         data-animation-effect=""><i class="fa-icon_cloud_alt"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Multiple Header Layouts with fully customizations</h6>
+                                                            <h6>Profesional, modern, dan terpercaya dalam setiap tugas</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -353,7 +232,7 @@
                                                         data-animation-effect=""><i class="fa-icon_like"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Fast Performance with high ranking for page speed</h6>
+                                                            <h6>Bersinergi dengan semua elemen bangsa</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -370,7 +249,8 @@
                                                         data-animation-effect=""><i class="fa-icon_mug"></i></span>
                                                     <div class="heading">
                                                         <div class="heading-content">
-                                                            <h6>Unique , Creative and Powerful Design</h6>
+                                                            <h6>Transparan, akuntabel, dan berorientasi pada pelayanan
+                                                                publik</h6>
                                                         </div>
                                                         <div class="hr">
                                                             <span></span>
@@ -404,8 +284,8 @@
                                     <div class="single-image animate-when-visible" data-animation-delay="100"
                                         data-animation-effect="fadeInLeft">
                                         <img width="600" height="429"
-                                            src="{{ asset('frontend/upload/iphone.png') }}" class="attachment-full"
-                                            alt="iphone" />
+                                            src="{{ asset('frontend/images/logo-polda-2.png') }}" class="attachment-full"
+                                            alt="logo" />
                                     </div>
                                 </div>
                             </div>
@@ -416,28 +296,24 @@
                                 <div class="gap" style="height:20px;line-height:20px;">
                                 </div>
                                 <h2 class="title textleft default bw-defaultpx dh-defaultpx divider-dark bc-default dw-default color-default"
-                                    style="margin-bottom:0px"><span>Ultra Responsive Layout and Retina Ready</span>
+                                    style="margin-bottom:0px"><span>MENGENAL SINGKAT POLRES KOTA TASIKMALAYA</span>
                                 </h2>
                                 <div class="hr border-small dh-2px alignleft hr-border-primary"
                                     style="margin-top:20px;margin-bottom:30px;">
                                     <span></span>
                                 </div>
                                 <div class="column-text ">
-                                    Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
-                                    at the coast of the Semantics, a large language ocean. A small river named Duden
-                                    flows by their place and supplies it with the necessary regelialia. It is a
-                                    paradisematic country, in which roasted parts of sentences fly into your mouth.
+                                    Polres Kota Tasikmalaya merupakan institusi kepolisian yang bertugas menjaga keamanan,
+                                    ketertiban, dan penegakan hukum di wilayah Kota Tasikmalaya, Jawa Barat. Dengan
+                                    pendekatan profesional, humanis, dan responsif, Polres ini hadir sebagai mitra
+                                    masyarakat dalam menciptakan lingkungan yang aman dan kondusif.
+
+                                    Mengusung semangat Polri Presisi, Polres Kota Tasikmalaya terus berinovasi dalam
+                                    pelayanan publik, membangun sinergi lintas elemen, serta menegakkan hukum secara adil
+                                    dan berimbang. Komitmen untuk mengayomi, melindungi, dan melayani menjadi landasan utama
+                                    dalam setiap langkah dan kebijakan yang diambil.
                                 </div>
                                 <div class="gap " style="height:35px;line-height:35px;">
-                                </div>
-                                <a id="brad_button_494205305"
-                                    class="button button_default button_color_default button_default border-radius-default icon-align-right"
-                                    title="Buy Now" href="#"><span>Buy Now</span></a>
-                                <a id="brad_button_1652746495"
-                                    class="button button_alternatewhite button_color_default button_default border-radius-default icon-align-right"
-                                    title="read more" href="#"><span>read more</span></a>
-                                <div class="gap " style="height:80px;line-height:80px;">
                                 </div>
                             </div>
                         </div>
@@ -459,7 +335,7 @@
                             <div class="inner-content content-box textnone"
                                 style="padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;">
                                 <h3 class="title textcenter default bw-2px dh-2px divider-dark bc-dark dw-default color-default"
-                                    style="margin-bottom:0px"><span>What people say about us</span>
+                                    style="margin-bottom:0px"><span>Bersama untuk Keamanan Kota</span>
                                 </h3>
                                 <div class="hr border-small dh-2px aligncenter hr-border-primary"
                                     style="margin-top:15px;margin-bottom:45px;">
@@ -474,28 +350,14 @@
                                             <div class="quote-logo">
                                             </div>
                                             <blockquote>
-                                                <q>A small river named Duden flows by their place and supplies it with
-                                                    the necessary regelialia. It is a paradisematic country, in which
-                                                    roasted parts of sentences fly into your mouth Even the all-powerful
-                                                    Pointing has no control about the blind texts it is an almost
-                                                    unorthographic life One day however a small line of blind text</q>
+                                                <q>
+
+                                                    Terima kasih atas kunjungan Anda.Dengan semangat Presisi, kami terus
+                                                    berinovasi demi membangun kepercayaan dan menciptakan lingkungan yang
+                                                    tertib dan kondusif Mari bersama wujudkan Tasikmalaya
+                                                    sebagai kota yang damai, aman, dan bermartabat untuk generasi hari ini
+                                                    dan masa depan.</q>
                                             </blockquote>
-                                            <h3 class="cite">
-                                                <span class="quote-name"> - Jony Doe</span> , <span class="quote-desc">Ceo
-                                                    of Example.com</span>
-                                            </h3>
-                                        </li>
-                                        <li class="quote-slider-item">
-                                            <div class="quote-logo">
-                                            </div>
-                                            <blockquote>
-                                                <q>A small river named Duden flows by their place and supplies it with
-                                                    the necessary regelialia. It is a paradisematic country, in which
-                                                    roasted parts of sentences fly into your mouth</q>
-                                            </blockquote>
-                                            <h3 class="cite">
-                                                <span class="quote-name"> - Jane Doe</span>
-                                            </h3>
                                         </li>
                                     </ul>
                                     <div class="carousel-pagination">

@@ -9,11 +9,31 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\MenuProfilController;
+use App\Http\Controllers\PelayananPublikController as ControllersPelayananPublikController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
+
+// page home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// page berita
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
+Route::get('/berita/{slug}', [BeritaController::class, 'detail_berita'])->name('berita-detail');
+Route::get('/berita/katgeory/{slug}', [BeritaController::class, 'berita_by_categories'])->name('berita-katgeory');
+
+// menu profile
+Route::get('/profil/{slug}', [MenuProfilController::class, 'index'])->name('profil-detail');
+
+// pelayanan publik
+Route::get('/pelayanan-publik/{slug}', [ControllersPelayananPublikController::class, 'index'])->name('pelayanan-publik-detail');
+
+// page kontak
+Route::get('/kontak', [KontakController::class, 'index']);
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

@@ -85,41 +85,17 @@
              <span class="text-black dark:text-slate-300">User Profil</span>
          </a>
 
-         {{-- Settings --}}
-         <a href="#"
-             class="nav-link hover:bg-transparent hover:text-black  rounded-md dark:hover:text-slate-200   flex items-center  decoration-0 px-3 py-3 cursor-pointer group-data-[sidebar=dark]:hover:text-slate-200 group-data-[sidebar=brand]:hover:text-black"
-             data-fc-type="collapse" data-fc-parent="parent-accordion">
-             <span data-lucide="lock"
-                 class="w-5 h-5 text-center text-slate-600 me-2 dark:text-slate-400 group-data-[sidebar=dark]:text-slate-400 group-data-[sidebar=brand]:text-slate-600"></span>
-             <span class="text-black dark:text-slate-300">Settings</span>
-             <i
-                 class="icofont-thin-down  fc-collapse-open:rotate-180 ms-auto inline-block text-[14px] transform transition-transform duration-300 text-black dark:text-slate-400 group-data-[sidebar=dark]:text-slate-400 group-data-[sidebar=brand]:text-slate-600"></i>
-         </a>
-         <div id="Authentication-flush" class="hidden  overflow-hidden" aria-labelledby="Authentication">
-             <ul class="nav flex-col flex flex-wrap ps-0 mb-0 ms-2">
-                 <li class="nav-item relative block">
-                     <a href="#"
-                         class="nav-link text-slate-600 dark:text-slate-300 hover:text-black rounded-md dark:hover:text-primary-500 relative group-data-[sidebar=brand]:hover:text-black   flex items-center decoration-0 px-3 py-3">
-                         <i
-                             class="icofont-dotted-right me-2 text-black text-[8px] group-data-[sidebar=brand]:text-slate-600"></i>
-                         Role
-                     </a>
-                 </li>
-             </ul>
-         </div>
-
-
          {{-- logout --}}
          <hr class="mt-5">
          <form action="{{ route('logout') }}" method="post">
              @csrf
-             <a href=""
+             <button type="submit"
                  class="nav-link hover:bg-transparent hover:text-black  rounded-md dark:hover:text-slate-200   flex items-center  decoration-0 px-3 py-3 cursor-pointer group-data-[sidebar=dark]:hover:text-slate-200 group-data-[sidebar=brand]:hover:text-black"
                  data-fc-parent="parent-accordion">
                  <span data-lucide="log-out"
                      class="w-5 h-5 text-center text-slate-600 me-2 dark:text-slate-400 group-data-[sidebar=dark]:text-slate-400 group-data-[sidebar=brand]:text-slate-600"></span>
                  <span class="text-black dark:text-slate-300">Sign Out</span>
-             </a>
+             </button>
          </form>
      </li>
  </ul>

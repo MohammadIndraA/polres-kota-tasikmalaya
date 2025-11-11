@@ -9,7 +9,7 @@
     <meta content="" name="Mannatthemes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('design-system/assets/images/logo-sb-v2.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('design-system/assets/images/logo-polda-1.png') }}" />
 
     <!-- Css -->
     <!-- Main Css -->

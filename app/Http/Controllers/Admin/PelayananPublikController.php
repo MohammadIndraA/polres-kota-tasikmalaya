@@ -8,6 +8,7 @@ use App\Http\Requests\PelayananPublikRequest;
 use App\Models\PelayananPublik;
 use App\Services\PelayananPublikService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class PelayananPublikController extends Controller
@@ -25,8 +26,8 @@ class PelayananPublikController extends Controller
          $pelayananPublik = $this->pelayananPublik->getAllPelayananPublik();
         return DataTables::of($pelayananPublik)
             ->addIndexColumn()
-           ->editColumn('content', function ($row) {
-                return $row->content;
+            ->editColumn('content', function ($row) {
+                 return Str::limit(strip_tags($row->content), 100); // 100 karakter, tanpa tag HTML
             })
            ->editColumn('image', function($row) {
                 if ($row->image) {

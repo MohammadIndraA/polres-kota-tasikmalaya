@@ -11,6 +11,7 @@ class PostRepository
         return Post::with('user', 'category')->latest()->get();
     }
 
+
     public function find($id)
     {
         return Post::with('user', 'category')->findOrFail($id);

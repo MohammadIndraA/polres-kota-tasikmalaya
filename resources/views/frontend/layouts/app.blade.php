@@ -29,8 +29,18 @@
     <link rel='stylesheet' href='{{ asset('frontend/css/fontawesome.css') }}' type='text/css' media='screen' />
     <link rel='stylesheet' href='{{ asset('frontend/css/font-awesome.css') }}' type='text/css' media='screen' />
 
+    <link rel="shortcut icon" href="{{ asset('frontend/images/logo-polda-1.png') }}" />
+
     <link href='https:/fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
         type='text/css'>
+
+    <style>
+        .logo-tinggi {
+            height: auto;
+            max-height: 220px;
+            width: auto;
+        }
+    </style>
 
     <!--[if IE 8]><link rel="stylesheet" type="text/css" href="http:/aperio.bradweb.net/wp-content/plugins/js_composer/assets/css/vc-ie8.css" media="screen"><![endif]-->
     <!--[if IE]>
@@ -62,67 +72,44 @@
                         <div id="text-2" class="widget widget_meta widget_text span3">
                             <h4>Get in touch</h4>
                             <div class="textwidget">
-                                PO Box 16122 Collins Street West Victoria 8007 Australia
-                                <br /> E: no-replay@envato.com
-                                <br /> T:+61 3 8376 6284
+                                {{ $setting->address ??
+                                    ' Tasikmalaya Kota Jl. Letnan Harun No. 76, Kota Tasikmalaya, Jawa Barat, Indonesia
+                                                                                                                                                                                                                                                                /n polrestasikmalayakota@mail.co
+                                                                                                                                                                                                                                                                /n (0265) 330032' }}
                                 <div class="gap" style="height:10px">
                                 </div>
                                 <ul id="brad_icons_1" class="brad-icons medium style1 icons-align-">
-                                    <li><a href="#" title="Twitter" target="_self"><i
+                                    <li><a href="{{ $setting->twitter_link ?? '#' }}" title="Twitter" target="_self"><i
                                                 class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" title="Facebook" target="_self"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" title="Google" target="_self"><i
-                                                class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#" title="Flickr" target="_self"><i
-                                                class="fa fa-flickr"></i></a></li>
-                                    <li><a href="#" title="Instagram" target="_self"><i
-                                                class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" title="Youtube" target="_self"><i
-                                                class="fa fa-youtube"></i></a></li>
-                                    <li><a href="#" title="Skype" target="_self"><i
-                                                class="fa fa-skype"></i></a></li>
-                                    <li><a href="#" title="Vimeo" target="_self"><i
-                                                class="fa fa-vimeo-square"></i></a></li>
-                                    <li><a href="#" title="LinkedIn" target="_self"><i
-                                                class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#" title="" target="_self"><i
-                                                class="fa fa-behance"></i></a></li>
-                                    <li><a href="#" title="Tumblr" target="_self"><i
-                                                class="fa fa-tumblr"></i></a></li>
-                                    <li><a href="#" title="Dropbox" target="_self"><i
-                                                class="fa fa-dropbox"></i></a></li>
+                                    <li><a href="{{ $setting->facebook_link ?? '#' }}" title="Facebook"
+                                            target="_self"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{ $setting->googleplus_link ?? '#' }}" title="Google"
+                                            target="_self"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="{{ $setting->instagram_link ?? '#' }}" title="Instagram"
+                                            target="_self"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="{{ $setting->youtube_link ?? '#' }}" title="Youtube"
+                                            target="_self"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="{{ $setting->linkedin_link ?? '#' }}" title="LinkedIn"
+                                            target="_self"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div id="recent-posts-3" class="widget widget_meta widget_recent_entries span3">
                             <h4>Recent Posts</h4>
                             <ul>
-                                <li>
-                                    <a href="#">Standard post with preview picture</a>
-                                    <span class="post-date">November 11, 2013</span>
-                                </li>
-                                <li>
-                                    <a href="#">Another Post with Preview picture</a>
-                                    <span class="post-date">November 8, 2013</span>
-                                </li>
-                                <li>
-                                    <a href="#">Quis lectus elemvolu euismod atras</a>
-                                    <span class="post-date">November 7, 2013</span>
-                                </li>
+                                @foreach ($posts->take(3) as $item)
+                                    <li>
+                                        <a href="#">{{ $item->title }}</a>
+                                        <span class="post-date">{{ $item->created_at->format('F d, Y') }}</span>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div id="twitter-2" class="widget widget_meta widget_twitter span3">
                             <h4>Latest Tweets</h4>
                             <div class="recent-tweets" id="recent_tweets_1515707491">
                                 <ul>
-                                    <li><span>Our Latest Creative Wordpress Theme "Retigo" has been realsed on
-                                            themeforest today. Check it Out on Themeforest <a
-                                                href="http:/t.co/hVtABj5tZo"
-                                                target="_blank">http:/t.co/hVtABj5tZo</a></span>
-                                        <br /><a class="timestamp"
-                                            href="https:/twitter.com/brad_web/status/474411858321887232"
-                                            target="_blank">1 year ago</a>
+                                    <li>-
                                     </li>
                                 </ul>
                             </div>
@@ -132,15 +119,15 @@
                             <div class="recent-works-items clearfix">
                                 <a href="#" title="Business Photogrpagy" class="hoverborder">
                                     <img width="80" height="80"
-                                        src="{{ asset('frontend/portfolio16-80x80.jpg') }}"
+                                        src="{{ asset('frontend/upload/portfolio16-80x80.jpg') }}"
                                         class="attachment-mini wp-post-image" alt="portfolio16" /></a>
                                 <a href="#" title="Brand Development" class="hoverborder">
                                     <img width="80" height="80"
-                                        src="{{ asset('frontend/portfolio5-80x80.jpg') }}"
+                                        src="{{ asset('frontend/upload/portfolio5-80x80.jpg') }}"
                                         class="attachment-mini wp-post-image" alt="portfolio5" /></a>
                                 <a href="#" title="Product Design" class="hoverborder">
                                     <img width="80" height="80"
-                                        src="{{ asset('frontend/portfolio11-80x80.jpg') }}"
+                                        src="{{ asset('frontend/upload/portfolio11-80x80.jpg') }}"
                                         class="attachment-mini wp-post-image" alt="portfolio11" /></a>
                                 <a href="#" title="Work Gallery Slider" class="hoverborder">
                                     <img width="80" height="80"
