@@ -1,0 +1,103 @@
+@extends('layouts.app', ['title' => 'Pelayanan Publik'])
+@section('content')
+    <div
+        class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 bg-white shadow  dark:bg-[#06090f]">
+        <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12 xl:col-span-12">
+            <div class="w-full relative mb-4">
+                <div class="flex-auto p-0 md:p-4">
+                    <div class="flex flex-wrap gap-4 mb-3">
+                        <div>
+                            <a href="{{ route('admin.pelayanan-publik.create') }}"
+                                class="inline-block focus:outline-none bg-brand-500 mt-1 text-white hover:bg-brand-600 hover:text-white  text-md font-medium py-2 px-4 rounded">
+                                Add Pelayanan Publik
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="grid
+                                grid-cols-1 p-0 md:p-4 bg-white rounded-lg dark:bg-gray-900">
+                        <div class="sm:-mx-6 lg:-mx-8">
+                            <div class="relative overflow-x-auto block w-full sm:px-6 lg:px-8">
+                                <table class="w-full" id="pelayananPublikTable">
+                                    <thead class="bg-white dark:bg-slate-700/20">
+                                        <tr>
+                                            <th scope="col"
+                                                class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase"
+                                                style="width: 5%">
+                                                No
+                                            </th>
+                                            <th scope="col"
+                                                class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                Nama
+                                            </th>
+                                            <th scope="col"
+                                                class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                Deskripsi / Konten
+                                            </th>
+                                            <th scope="col"
+                                                class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                Gambar
+                                            </th>
+                                            <th scope="col"
+                                                class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                Status
+                                            </th>
+                                            <th scope="col"
+                                                class="p-3 text-center text-xs font-medium tracking-wider text-gray-700 dark:text-gray-400 uppercase"
+                                                style="width: 15%">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div><!--end div-->
+                        </div><!--end div-->
+                    </div><!--end grid-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div> <!--end grid-->
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        $(function() {
+
+            var table = $('#pelayananPublikTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('admin.pelayanan-publik.index') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'content',
+                        name: 'content'
+                    },
+                    {
+                        data: 'image',
+                        name: 'image'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            });
+
+        });
+    </script>
+@endsection
