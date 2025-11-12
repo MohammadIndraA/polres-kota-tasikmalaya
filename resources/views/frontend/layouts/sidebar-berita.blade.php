@@ -1,11 +1,10 @@
  <div id="sidebar" class="span3 sidebar sidebar-right" style="">
      <div class="inner-content">
          <div id="search-2" class="widget widget_meta widget_search">
-             <form action="#" id="searchform" class="search-form" method="get">
+             <form action="{{ route('cari-berita') }}" id="searchform" class="search-form" method="get">
                  <div>
-                     <input type="text" id="s" name="s" value="Search..."
-                         onfocus="if(this.value=='Search...')this.value='';"
-                         onblur="if(this.value=='')this.value='Search...';" autocomplete="off" />
+                     <input type="text" id="search" name="search" value="{{ request('search') }}" onfocus=""
+                         onblur=";" autocomplete="off" />
                      <input type="submit" value="Go" />
                  </div>
              </form>
@@ -26,7 +25,7 @@
              <ul>
                  @foreach ($categories as $item)
                      <li class="cat-item cat-item-2"><a
-                             href="{{ route('berita-katgeory', $item->slug) }}">{{ $item->name }}</a>
+                             href="{{ route('berita-ketegori', $item->slug) }}">{{ $item->name }}</a>
                      </li>
                  @endforeach
              </ul>

@@ -21,11 +21,17 @@ class BeritaController extends Controller
 
      public function berita_by_categories(Request $request)
      {
-        $postByCategory = Post::with('category')
-            ->whereHas('category', function ($query) use ($request) {
-                $query->where('slug', $request->slug);
-            })
-            ->paginate(6);
+        $postByCategory = Post::byCategoryAndSearch($request->slug, $request->search)
+         ->paginate(6);
+
          return view('frontend.kategori.index', compact('postByCategory'));
      }
+
+     public function search(Request $request)
+     {
+         $postByCategory = Post::byCategoryAndSearch($request->slug, $request->search)
+         ->paginate(6);
+         return view('frontend.kategori.index', compact('postByCategory'));
+     }
+
 }

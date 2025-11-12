@@ -11,7 +11,7 @@
                     <!-- MAIN IMAGE -->
                     @foreach ($banners as $item)
                         <img src="{{ asset('storage/' . $item->image) }}" alt="shutterstock_178724276"
-                            data-bgposition="right top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                            data-bgposition="right top"  data-bgfit="cover" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
 
                         <!-- LAYER NR. 1 -->
@@ -63,7 +63,7 @@
                                             @php
                                                 $randomIcon = $icons[array_rand($icons)];
                                             @endphp
-                                            <div class="span">
+                                            <a href="{{ route('pelayanan-publik-detail', $item->slug) }}" class="span">
                                                 <div class="inner-content " data-animation-delay="0"
                                                     data-animation-effect="">
                                                     <div class="feature_box ">
@@ -84,7 +84,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         @endforeach
 
                                     </div>

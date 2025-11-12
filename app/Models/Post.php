@@ -51,4 +51,21 @@ class Post extends Model
             $model->slug = Str::slug($model->title);
         });
     }
+
+    public function scopeByCategoryAndSearch($query, $slug = null, $search = null)
+{
+    return $query->with('category')
+        ->when($slug, function ($q) use ($slug) {
+            $q->whereHas('category', function ($sub) use ($slug) {
+                $sub->where('slug', $slug);
+            });
+        })
+        ->when($search, function ($q) use ($search) {
+            $q->where(function ($sub) use ($search) {
+                $sub->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('content', 'like', '%' . $search . '%');
+            });
+        });
+}
+
 }

@@ -10,7 +10,8 @@
                     <div class="row-fluid">
                         <div class="row-fluid">
                             <div class="titlebar-heading">
-                                <h1><span>Katgoeri {{ $postByCategory->name }}</span></h1>
+                                <h1><span>{{ request()->get('slug') ? 'Kategori' : 'Search' }}
+                                    </span></h1>
                                 <div class="hr hr-border-primary double-border border-small">
                                     <span></span>
                                 </div>
@@ -18,7 +19,8 @@
                             <div id="breadcrumbs">
                                 <span class="breadcrumb-title">You Are Here:</span><span><a
                                         href="/">Home</a></span><span class="separator">/</span><span
-                                    class="current">Katgoeri {{ $postByCategory->name }}</span>
+                                    class="current">{{ request()->get('slug') ? 'Kategori' : 'Search' }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -58,62 +60,70 @@
                                                             </div>
                                                             <img src="images/loader.gif" alt="" />
                                                         </div>
-                                                        <ul class="posts-grid row-fluid element-padding-medium element-vpadding-default posts-grid-bg-stroke"
-                                                            data-masonry="no">
-                                                            @foreach ($postByCategory as $item)
-                                                                <li id="post-138"
-                                                                    class="post-138 post type-post status-publish format-standard has-post-thumbnail hentry category-creative tag-animation tag-architecture tag-creative tag-designing tag-illustration-2 tag-video post-grid-item span6">
-                                                                    <div class="inner-content">
-                                                                        <a href="{{ route('berita-detail', $item->slug) }}">
-                                                                            <div class="image">
-                                                                                <img width="1100" height="734"
-                                                                                    src="{{ asset('frontend/upload/blog1.jpg') }}"
-                                                                                    class="attachment-thumb-large wp-post-image"
-                                                                                    alt="blog1" />
-                                                                            </div>
-                                                                        </a>
-                                                                        <div class="post-text-container">
-                                                                            <div class="post-meta-data style2">
-                                                                                <span class="post-meta-cats">
-                                                                                    <a href="{{ route('berita-detail', $item->slug) }}"
-                                                                                        rel="category tag">{{ $item->category->name }}</a></span>
-                                                                                <span
-                                                                                    class="post-meta-date">{{ $item->created_at->format('F d, Y') }}
-                                                                                </span>
-                                                                            </div>
-                                                                            <h4><a href="{{ route('berita-detail', $item->slug) }}"
-                                                                                    title="Permalink to Standard post with preview picture">
-                                                                                    {{ $item->title }} </a></h4>
-                                                                            <p class="excerpt">
-                                                                                {{ $item->excerpt }} [&hellip;]
-                                                                            </p>
-                                                                            <div class="post-bottom">
-                                                                                <div class="post-meta-data">
-                                                                                    <span>
+                                                        @if ($posts->total() > 0)
+                                                            <ul class="posts-grid row-fluid element-padding-medium element-vpadding-default posts-grid-bg-stroke"
+                                                                data-masonry="no">
+                                                                @foreach ($postByCategory as $item)
+                                                                    <li id="post-138"
+                                                                        class="post-138 post type-post status-publish format-standard has-post-thumbnail hentry category-creative tag-animation tag-architecture tag-creative tag-designing tag-illustration-2 tag-video post-grid-item span6">
+                                                                        <div class="inner-content">
+                                                                            <a
+                                                                                href="{{ route('berita-detail', $item->slug) }}">
+                                                                                <div class="image">
+                                                                                    <img width="1100" height="734"
+                                                                                        src="{{ asset('frontend/upload/blog1.jpg') }}"
+                                                                                        class="attachment-thumb-large wp-post-image"
+                                                                                        alt="blog1" />
+                                                                                </div>
+                                                                            </a>
+                                                                            <div class="post-text-container">
+                                                                                <div class="post-meta-data style2">
+                                                                                    <span class="post-meta-cats">
                                                                                         <a href="{{ route('berita-detail', $item->slug) }}"
-                                                                                            title="Comment on Standard post with preview picture">
-                                                                                            Baca Selanjutnya</a></span>
+                                                                                            rel="category tag">{{ $item->category->name }}</a></span>
+                                                                                    <span
+                                                                                        class="post-meta-date">{{ $item->created_at->format('F d, Y') }}
+                                                                                    </span>
+                                                                                </div>
+                                                                                <h4><a href="{{ route('berita-detail', $item->slug) }}"
+                                                                                        title="Permalink to Standard post with preview picture">
+                                                                                        {{ $item->title }} </a></h4>
+                                                                                <p class="excerpt">
+                                                                                    {{ $item->excerpt }} [&hellip;]
+                                                                                </p>
+                                                                                <div class="post-bottom">
+                                                                                    <div class="post-meta-data">
+                                                                                        <span>
+                                                                                            <a href="{{ route('berita-detail', $item->slug) }}"
+                                                                                                title="Comment on Standard post with preview picture">
+                                                                                                Baca Selanjutnya</a></span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                        <div class='page-nav clearfix '>
-                                                            @if ($postByCategory->onFirstPage())
-                                                                <span>← </span>
-                                                            @else
-                                                                <a href="{{ $postByCategory->previousPageUrl() }}">← </a>
-                                                            @endif
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <div class='page-nav clearfix '>
+                                                                @if ($postByCategory->onFirstPage())
+                                                                    <span>← </span>
+                                                                @else
+                                                                    <a href="{{ $postByCategory->previousPageUrl() }}">←
+                                                                    </a>
+                                                                @endif
 
-                                                            @if ($postByCategory->hasMorePages())
-                                                                <a href="{{ $postByCategory->nextPageUrl() }}"> →</a>
-                                                            @else
-                                                                <span> →</span>
-                                                            @endif
+                                                                @if ($postByCategory->hasMorePages())
+                                                                    <a href="{{ $postByCategory->nextPageUrl() }}"> →</a>
+                                                                @else
+                                                                    <span> →</span>
+                                                                @endif
 
-                                                        </div>
+                                                            </div>
+                                                        @else
+                                                            <div class="alert alert-warning text-center">
+                                                                Data belum tersedia untuk kategori atau pencarian ini.
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

@@ -23,7 +23,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // page berita
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/berita/{slug}', [BeritaController::class, 'detail_berita'])->name('berita-detail');
-Route::get('/berita/katgeory/{slug}', [BeritaController::class, 'berita_by_categories'])->name('berita-katgeory');
+Route::get('/berita/kategori/{slug}', [BeritaController::class, 'berita_by_categories'])->name('berita-ketegori');
+
+// Untuk search umum tanpa kategori
+Route::get('/cari/berita', [BeritaController::class, 'search'])->name('cari-berita');
 
 // menu profile
 Route::get('/profil/{slug}', [MenuProfilController::class, 'index'])->name('profil-detail');
