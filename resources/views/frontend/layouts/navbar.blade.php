@@ -70,8 +70,7 @@
                                         </li>
                                         <li
                                             class="menu-item menu-item-has-children {{ Request::is('pelayanan-publik*') ? 'current-menu-ancestor current-menu-parent' : '' }}">
-                                            <a href="#">Pelayanan Publik
-                                                Terpadu</a>
+                                            <a href="#">Pelayanan Publik</a>
                                             <ul class="sub-menu ">
                                                 @foreach ($pelayanan_publik as $item)
                                                     <li class="menu-item"><a

@@ -10,7 +10,7 @@ class PelayananPublikRepository
 {
     public function all()
     {
-        return PelayananPublik::latest()->get();
+        return PelayananPublik::orderBy('urutan', 'asc')->get();
     }
 
     public function find($id)

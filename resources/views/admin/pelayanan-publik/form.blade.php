@@ -74,6 +74,10 @@
                         <x-input-v2 name="name" label="Nama" :value="old('name', $pelayananPublik->name ?? '')" placeholder="Nama Pelayanan Publik"
                             required="true" type="text" />
 
+                        {{-- urutan --}}
+                        <x-input-v2 name="urutan" label="Urutan" :value="old('urutan', $pelayananPublik->urutan ?? '')" placeholder="Nama Pelayanan Publik"
+                            required="true" type="number" />
+
                         {{-- deskeirpsi --}}
                         <label for="Deskripsi" class="font-medium text-sm text-slate-600 dark:text-slate-400">Deskripsi
                             <span class="text-red-500">*</span></label>

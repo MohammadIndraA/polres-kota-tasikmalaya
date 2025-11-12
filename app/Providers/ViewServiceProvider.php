@@ -40,7 +40,10 @@ class ViewServiceProvider extends ServiceProvider
             $view->with([
                 'posts' => Post::with('category')->where('status', 'published')->latest()->paginate(6),
                 'categories' => Categories::all(),
-                'pelayanan_publik' => PelayananPublik::where('status', 'published')->latest()->get(),
+                'pelayanan_publik' => PelayananPublik::where('status', 'published')
+                                    ->orderBy('urutan', 'asc') // atau 'desc' jika ingin dari besar ke kecil
+                                    ->get(),
+
                 'menu_profil' => MenuProfile::where('status', 'published')->latest()->get(),
                 'highlightedPosts' => Post::where('status', 'published')->inRandomOrder()->take(10)->get(),
                 'setting' => Setting::first(),

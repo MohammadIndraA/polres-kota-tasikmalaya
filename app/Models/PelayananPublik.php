@@ -20,5 +20,6 @@ class PelayananPublik extends Model
         'status',
         'content',
         'image',
+        'urutan',
     ];
 }
