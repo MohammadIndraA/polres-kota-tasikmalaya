@@ -34,7 +34,7 @@ class PostRequest extends FormRequest
             'category_id' => 'nullable|exists:categories,id',
             'status' => 'required|in:draft,published,archived',
             'slug' => 'nullable|string',
-            'excerpt' => 'required|string|min:8',
+            'excerpt' => 'required|string|min:8|max:255',
             'user_id' => 'nullable',
             'image' => $this->isUpdate()
                 ? 'nullable|image|mimes:jpg,jpeg,png|max:2048'
@@ -64,6 +64,7 @@ class PostRequest extends FormRequest
             'excerpt.required' => 'Ringkasan berita wajib diisi.',
             'excerpt.string' => 'Ringkasan berita harus berupa teks.',
             'excerpt.min' => 'Ringkasan berita minimal :min karakter.',
+            'excerpt.max' => 'Ringkasan berita maksimal :max karakter.',
             
             'image.required' => 'Gambar sampul wajib diunggah saat membuat berita baru.',
             'image.image' => 'File yang diunggah harus berupa gambar.',
