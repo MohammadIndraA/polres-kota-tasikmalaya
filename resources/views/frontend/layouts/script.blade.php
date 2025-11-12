@@ -160,8 +160,8 @@
             // Retina logo
             var retina = window.devicePixelRatio > 1;
             if (retina) {
-                $('#logo .default-logo').attr('src', 'images/logo_2x.png');
-                $('#logo .white-logo').attr('src', 'frontend/images/logowhite_2x.png');
+                $('#logo .default-logo').attr('src', '{{ asset('frontend/images/logo-polda.png') }}');
+                $('#logo .white-logo').attr('src', '{{ asset('frontend/images/logo-polda.png') }}');
             }
 
             $('#logo img').css('max-width', '110px');

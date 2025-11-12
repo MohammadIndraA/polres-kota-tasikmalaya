@@ -63,7 +63,7 @@
 
                         <ul class="py-1" aria-labelledby="navUserdata">
                             <li>
-                                <a href=""
+                                <a href="{{ route('admin.update-profil.index') }}"
                                     class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
                           dark:text-gray-200 dark:hover:bg-gray-900/20
                           dark:hover:text-white">
@@ -72,22 +72,13 @@
                                     Profile</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.update-profil.index') }}"
                                     class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
                           dark:text-gray-200 dark:hover:bg-gray-900/20
                           dark:hover:text-white">
                                     <span data-lucide="settings"
                                         class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"></span>
                                     Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
-                          dark:text-gray-200 dark:hover:bg-gray-900/20
-                          dark:hover:text-white">
-                                    <span data-lucide="dollar-sign"
-                                        class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"></span>
-                                    Earnings</a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">

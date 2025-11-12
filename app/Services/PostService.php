@@ -61,6 +61,7 @@ class PostService
         if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
             $data['image'] = $this->upload('posts', $data['image']);
         }
+
         return $this->repository->create($data);
     }
 

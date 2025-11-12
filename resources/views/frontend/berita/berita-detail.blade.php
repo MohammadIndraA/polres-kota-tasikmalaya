@@ -1,4 +1,4 @@
-@extends('frontend/.layouts.app')
+@extends('frontend/.layouts.app', ['title' => 'Berita Detail'])
 @section('content')
     <!-- Static Page Titlebar -->
     <section id="titlebar"

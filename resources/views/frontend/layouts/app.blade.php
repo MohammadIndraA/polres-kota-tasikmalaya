@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <title>Aperio</title>
+    <title>{{ $title ? $title . ' - ' : '' }}Polres Kota Tasikmalaya</title>
+
     <!--[if lte IE 8]>
   <script src="http:/html5shim.googlecode.com/svn/trunk/html5.js"></script>
  <![endif]-->
@@ -34,13 +35,6 @@
     <link href='https:/fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
         type='text/css'>
 
-    <style>
-        .logo-tinggi {
-            height: auto;
-            max-height: 220px;
-            width: auto;
-        }
-    </style>
 
     <!--[if IE 8]><link rel="stylesheet" type="text/css" href="http:/aperio.bradweb.net/wp-content/plugins/js_composer/assets/css/vc-ie8.css" media="screen"><![endif]-->
     <!--[if IE]>
@@ -74,8 +68,8 @@
                             <div class="textwidget">
                                 {{ $setting->address ??
                                     ' Tasikmalaya Kota Jl. Letnan Harun No. 76, Kota Tasikmalaya, Jawa Barat, Indonesia
-                                                                                                                                                                                                                                                                /n polrestasikmalayakota@mail.co
-                                                                                                                                                                                                                                                                /n (0265) 330032' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /n polrestasikmalayakota@mail.co
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /n (0265) 330032' }}
                                 <div class="gap" style="height:10px">
                                 </div>
                                 <ul id="brad_icons_1" class="brad-icons medium style1 icons-align-">

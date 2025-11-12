@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.app', ['title' => 'Home'])
 @section('content')
     <!-- Rev Slider Start -->
     <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"

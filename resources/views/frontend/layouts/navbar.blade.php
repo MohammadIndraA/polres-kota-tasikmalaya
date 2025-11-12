@@ -3,19 +3,21 @@
         <a id="close-mobile-menu" href="#">X</a>
         <ul id="mobile_menu" class="mobile_menu">
             <li class="menu-item current-menu-ancestor current-menu-parent menu-item-has-children"><a
-                    href="#">Home</a>
+                    href="/">Home</a>
             </li>
             <li class="menu-item menu-item-has-children menu-item-6811"><a href="#">Profile</a>
                 <ul class="sub-menu">
                     @foreach ($menu_profil as $item)
-                        <li class="menu-item"><a href="about-us-1.html">{{ $item->name }} 1</a></li>
+                        <li class="menu-item"><a href="{{ route('profil-detail', $item->slug) }}">{{ $item->name }}
+                            </a></li>
                     @endforeach
                 </ul>
             </li>
             <li class="menu-item menu-item-has-children menu-item-6814"><a href="#">Pelayanan Publik Terpadu</a>
                 <ul class="sub-menu">
                     @foreach ($pelayanan_publik as $item)
-                        <li class="menu-item"><a href="blog-grid.html">{{ $item->name }}</a></li>
+                        <li class="menu-item"><a
+                                href="{{ route('pelayanan-publik-detail', $item->slug) }}">{{ $item->name }}</a></li>
                     @endforeach
                 </ul>
             </li>
@@ -89,7 +91,7 @@
                                             <ul class="sub-menu ">
                                                 <li
                                                     class="menu-item menu-item-has-children {{ Request::is('kontak') ? 'current-menu-ancestor current-menu-parent' : '' }}">
-                                                    <a href="shop.html">Cooming Soon</a>
+                                                    <a href="#">Cooming Soon</a>
                                                 </li>
                                         </li>
                                     </ul>
