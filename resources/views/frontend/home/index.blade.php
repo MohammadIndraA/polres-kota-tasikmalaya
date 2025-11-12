@@ -10,8 +10,9 @@
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
                     <!-- MAIN IMAGE -->
                     @foreach ($banners as $item)
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="shutterstock_178724276"
-                            data-bgposition="right top"  data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="banner"
+                            style="width: 100%; height: auto; object-fit: cover;">
+
                         <!-- LAYERS -->
 
                         <!-- LAYER NR. 1 -->

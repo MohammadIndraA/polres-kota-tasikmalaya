@@ -36,8 +36,6 @@
             <div class="row-fluid">
                 <div class="row-fluid">
 
-                    @include('frontend.layouts.sidebar-berita')
-
                     {{-- content --}}
                     <div id="content" class="content span9 content-left headline-bg-#f6f6f6">
                         <div class="inner-content">
@@ -133,6 +131,10 @@
                             </section>
                         </div>
                     </div>
+
+                    {{-- sidebar --}}
+                    @include('frontend.layouts.sidebar-berita')
+
                 </div>
             </div>
         </div>
