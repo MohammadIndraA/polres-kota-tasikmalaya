@@ -14,13 +14,13 @@
                     <div class="row-fluid">
                         <div class="row-fluid">
                             <div class="titlebar-heading">
-                                <h1><span>Contact Us</span></h1>
+                                <h1><span>Kontak</span></h1>
                                 <div class="hr hr-border-primary double-border border-small">
                                     <span></span>
                                 </div>
                                 <div class="titlebar-subcontent">
-                                    FAR FAR AWAY, BEHIND THE WORD MOUNTAINS, FAR FROM THE COUNTRIES
-                                    VOKALIA AND CONSONANTIA, THERE LIVE THE BLIND TEXTS.
+                                    HUBUNGI KAMI UNTUK INFORMASI LAYANAN, PENGADUAN, ATAU PERMOHONAN RESMI. TIM KAMI SIAP
+                                    MEMBANTU ANDA DENGAN CEPAT DAN TEPAT.
                                 </div>
                             </div>
                         </div>
@@ -50,19 +50,20 @@
                                         <div class="inner-content content-box textnone"
                                             style="padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;">
                                             <h3 class="title textleft default bw-2px dh-2px divider-light bc-dark dw-default color-default"
-                                                style="margin-bottom:0px"><span>Get in Touch</span>
+                                                style="margin-bottom:0px"><span>Hubungi Kami</span>
                                             </h3>
                                             <div class="hr border-small dh-2px alignleft hr-border-primary"
                                                 style="margin-top:15px;margin-bottom:25px;">
                                                 <span></span>
                                             </div>
                                             <h6 class="title textleft default bw-2px dh-2px divider-dark bc-dark dw-default color-default"
-                                                style="margin-bottom:30px"><span>Please feel free to contact us any time we
-                                                    will get back to you asp</span>
+                                                style="margin-bottom:20px"><span>Punya pertanyaan atau butuh bantuan? Jangan
+                                                    ragu untuk menghubungi kami — kami senang mendengar dari Anda!</span>
                                             </h6>
-                                            <div class="column-text ">
-                                                PO Box 16122 Collins Street West Victoria 8007 Australia Email :
-                                                no-replay@envato.com Telephone:+61 3 8376 6284
+                                            <div class="column-text">
+                                                Tasikmalaya Kota Jl. Letnan Harun No. 76, Kota Tasikmalaya, Jawa Barat,
+                                                Indonesia <br>
+                                                Call Center Polri : 110
                                                 <div class="gap" style="height:20px">
                                                 </div>
                                                 <ul id="brad_icons_2" class="brad-icons medium style1 icons-align-">
@@ -72,28 +73,12 @@
                                                                 class="fa-facebook"></i></a></li>
                                                     <li><a href="#" title="Google" target="_self"><i
                                                                 class="fa-google-plus"></i></a></li>
-                                                    <li><a href="#" title="Flickr" target="_self"><i
-                                                                class="fa-flickr"></i></a></li>
                                                     <li><a href="#" title="Instagram" target="_self"><i
                                                                 class="fa-instagram"></i></a></li>
                                                     <li><a href="#" title="Youtube" target="_self"><i
                                                                 class="fa-youtube"></i></a></li>
-                                                    <li><a href="#" title="Skype" target="_self"><i
-                                                                class="fa-skype"></i></a></li>
-                                                    <li><a href="#" title="Vimeo" target="_self"><i
-                                                                class="fa-vimeo-square"></i></a></li>
                                                     <li><a href="#" title="LinkedIn" target="_self"><i
                                                                 class="fa-linkedin"></i></a></li>
-                                                    <li><a href="#" title="" target="_self"><i
-                                                                class="fa-behance"></i></a></li>
-                                                    <li><a href="#" title="Dribbble" target="_self"><i
-                                                                class="fa-dribbble"></i></a></li>
-                                                    <li><a href="#" title="Digg" target="_self"><i
-                                                                class="fa-digg"></i></a></li>
-                                                    <li><a href="#" title="Tumblr" target="_self"><i
-                                                                class="fa-tumblr"></i></a></li>
-                                                    <li><a href="#" title="Dropbox" target="_self"><i
-                                                                class="fa-dropbox"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -106,18 +91,16 @@
                                                     <div class="span6">
                                                         <div class="control-wrap">
                                                             <span class="icon"><i class="fa-user"></i></span><input
-                                                                name="name" id="name" type="text"
-                                                                maxlength="100" class="name required"
-                                                                placeholder="Your Name" />
+                                                                name="name" id="name" type="text" maxlength="100"
+                                                                class="name required" placeholder="Your Name" />
                                                         </div>
                                                     </div>
                                                     <div class="span6">
                                                         <div class="control-wrap">
                                                             <span class="icon"><i
                                                                     class="fa fa-envelope-o"></i></span><input
-                                                                name="mail" id="mail" type="text"
-                                                                maxlength="100" class="email required"
-                                                                placeholder="Your Email" />
+                                                                name="mail" id="mail" type="text" maxlength="100"
+                                                                class="email required" placeholder="Your Email" />
                                                         </div>
                                                     </div>
                                                     <div class="span12">
