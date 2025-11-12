@@ -33,6 +33,15 @@
              <span class="text-black dark:text-slate-300">Pelayanan Publik</span>
          </a>
 
+         {{-- Sub Pelayanan Publik --}}
+         <a href="{{ route('admin.sub-pelayanan-publik.index') }}"
+             class="nav-link hover:bg-transparent hover:text-black  rounded-md dark:hover:text-slate-200   flex items-center  decoration-0 px-3 py-3 cursor-pointer group-data-[sidebar=dark]:hover:text-slate-200 group-data-[sidebar=brand]:hover:text-black"
+             data-fc-parent="parent-accordion">
+             <span data-lucide="ice-cream-2"
+                 class="w-5 h-5 text-center text-slate-600 me-2 dark:text-slate-400 group-data-[sidebar=dark]:text-slate-400 group-data-[sidebar=brand]:text-slate-600"></span>
+             <span class="text-black dark:text-slate-300">Sub Pelayanan Publik</span>
+         </a>
+
          {{-- Menu Profil --}}
          <a href="{{ route('admin.profil.index') }}"
              class="nav-link hover:bg-transparent hover:text-black  rounded-md dark:hover:text-slate-200   flex items-center  decoration-0 px-3 py-3 cursor-pointer group-data-[sidebar=dark]:hover:text-slate-200 group-data-[sidebar=brand]:hover:text-black"

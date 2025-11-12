@@ -4,26 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ResponseJson;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PelayananPublikRequest;
-use App\Services\PelayananPublikService;
+use App\Http\Requests\SubPelayananPublikRequest;
+use App\Services\SubPelayananPublikService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
-class PelayananPublikController extends Controller
+
+class SubPelayananPublikController extends Controller
 {
-    protected PelayananPublikService $pelayananPublik;
+      protected SubPelayananPublikService $service;
 
-    public function __construct(PelayananPublikService $pelayananPublik)
+    public function __construct(SubPelayananPublikService $service)
     {
-        $this->pelayananPublik = $pelayananPublik;
+        $this->service = $service;
     }
-
+    
     public function index(Request $request)
     {
+        $sub_pelayanan = $this->service->getAllSubPelayananPublik();
         if ($request->ajax()) {
-         $pelayananPublik = $this->pelayananPublik->getAllPelayananPublik();
-        return DataTables::of($pelayananPublik)
+         $sub_pelayanan = $this->service->getAllSubPelayananPublik();
+        return DataTables::of($sub_pelayanan)
             ->addIndexColumn()
             ->editColumn('content', function ($row) {
                  return Str::limit(strip_tags($row->content), 100); // 100 karakter, tanpa tag HTML
@@ -46,49 +48,50 @@ class PelayananPublikController extends Controller
             ->addColumn('action', function ($row) {
                 return view('components.button-action', [
                     'id' => $row->id,
-                    'routeEdit' => 'admin.pelayanan-publik.edit',
-                    'routeDelete' => 'admin.pelayanan-publik.destroy',
-                    'dataTable' => 'pelayananPublikTable',
+                    'routeEdit' => 'admin.sub-pelayanan-publik.edit',
+                    'routeDelete' => 'admin.sub-pelayanan-publik.destroy',
+                    'dataTable' => 'sub_pelayananTable',
                     'model' => $row
                 ])->render();
             })
             ->rawColumns(['status', 'action', 'content','image'])
             ->make(true);
         }
-        return view('admin.pelayanan-publik.index');
+        return view('admin.sub-pelayanan-publik.index');
     }
 
     public function create()
     {
-        return view('admin.pelayanan-publik.form');
+        $playananPubliks = $this->service->getAllPelayananPublik();
+        return view('admin.sub-pelayanan-publik.form', compact('playananPubliks'));
     }
 
-    public function store(PelayananPublikRequest $request)
+    public function store(SubPelayananPublikRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = auth()->id();
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image');
         }
 
-        $this->pelayananPublik->createPelayananPublik($data);
+        $this->service->createSubPelayananPublik($data);
 
-        return redirect()->route('admin.pelayanan-publik.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('admin.sub-pelayanan-publik.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     public function show(string $id)
     {
-        $pelayananPublik = $this->pelayananPublik->findPelayananPublik($id);
-        return view('pelayananPubliks.show', compact('pelayananPublik'));
+        $sub_pelayanan = $this->service->findSubPelayananPublik($id);
+        return view('sub_pelayanans.show', compact('sub_pelayanan'));
     }
 
     public function edit(string $id)
     {
-        $pelayananPublik = $this->pelayananPublik->findPelayananPublik($id);
-        return view('admin.pelayanan-publik.form', compact('pelayananPublik'));
+        $playananPubliks = $this->service->getAllPelayananPublik();
+        $subPelayananPublik = $this->service->findSubPelayananPublik($id);
+        return view('admin.sub-pelayanan-publik.form', compact('subPelayananPublik', 'playananPubliks'));
     }
 
-    public function update(PelayananPublikRequest $request, string $id)
+    public function update(SubPelayananPublikRequest $request, string $id)
     {
         $data = $request->validated();
 
@@ -96,14 +99,14 @@ class PelayananPublikController extends Controller
             $data['image'] = $request->file('image');
         }
 
-        $this->pelayananPublik->updatePelayananPublik($id, $data);
+        $this->service->updateSubPelayananPublik($id, $data);
 
-        return redirect()->route('admin.pelayanan-publik.index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('admin.sub-pelayanan-publik.index')->with('success', 'Data berhasil diperbarui!');
     }
 
     public function destroy(string $id)
     {
-        $this->pelayananPublik->deletePelayananPublik($id);
+        $this->service->deleteSubPelayananPublik($id);
         return ResponseJson::success(null, 'berhasil dihapus');
     }
 }

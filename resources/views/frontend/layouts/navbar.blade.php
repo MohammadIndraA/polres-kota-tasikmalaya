@@ -13,7 +13,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="menu-item menu-item-has-children menu-item-6814"><a href="#">Pelayanan Publik Terpadu</a>
+            <li class="menu-item menu-item-has-children menu-item-6814"><a href="#">Pelayanan Publik</a>
                 <ul class="sub-menu">
                     @foreach ($pelayanan_publik as $item)
                         <li class="menu-item"><a

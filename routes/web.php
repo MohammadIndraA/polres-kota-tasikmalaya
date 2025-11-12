@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PelayananPublikController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SubPelayananPublikController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HomeController;
@@ -105,5 +106,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/profil', [MenuProfileController::class, 'show'])->name('profil.show');
         Route::put('/profil/{id}', [MenuProfileController::class, 'update'])->name('profil.update');
         Route::delete('/profil/{id}/delete', [MenuProfileController::class, 'destroy'])->name('profil.destroy');
+
+         // route pelayanan-publik
+        Route::get('/sub-pelayanan-publiks', [SubPelayananPublikController::class, 'index'])->name('sub-pelayanan-publik.index');
+        Route::get('/sub-pelayanan-publik/create', [SubPelayananPublikController::class, 'create'])->name('sub-pelayanan-publik.create');
+        Route::get('/sub-pelayanan-publik/{id}/edit', [SubPelayananPublikController::class, 'edit'])->name('sub-pelayanan-publik.edit');
+        Route::post('/sub-pelayanan-publik/store', [SubPelayananPublikController::class, 'store'])->name('sub-pelayanan-publik.store');
+        Route::get('/sub-pelayanan-publik', [SubPelayananPublikController::class, 'show'])->name('sub-pelayanan-publik.show');
+        Route::put('/sub-pelayanan-publik/{id}', [SubPelayananPublikController::class, 'update'])->name('sub-pelayanan-publik.update');
+        Route::delete('/sub-pelayanan-publik/{id}/delete', [SubPelayananPublikController::class, 'destroy'])->name('sub-pelayanan-publik.destroy');
     });
 });

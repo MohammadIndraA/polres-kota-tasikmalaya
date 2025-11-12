@@ -1,35 +1,64 @@
 @extends('frontend.layouts.app', ['title' => 'Home'])
+@section('styles')
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 80vh;
+            /* hanya untuk desktop */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Untuk tablet dan HP: tampilkan seluruh gambar, tinggi otomatis */
+        @media (max-width: 768px) {
+            .slide img {
+                height: auto;
+                /* agar tidak dipotong */
+                max-height: none;
+                /* hapus batasan tinggi */
+                object-fit: contain;
+                /* opsional: jika ingin pastikan seluruh gambar terlihat */
+            }
+
+            /* Opsional: beri padding atas/bawah jika perlu jarak */
+            .slider-container {
+                max-height: none;
+            }
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Rev Slider Start -->
-    <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
-        style="margin:0px auto;background-color:#E9E9E9;padding:0px;margin-top:0px;margin-bottom:0px;max-height:600px;">
-        <!-- START REVOLUTION SLIDER 4.6.5 fullwidth mode -->
-        <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display:none;max-height:600px;height:600px;">
-            <ul>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                    <!-- MAIN IMAGE -->
-                    @foreach ($banners as $item)
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="banner"
-                            style="width: 100%; height: auto; object-fit: cover;">
-
-                        <!-- LAYERS -->
-
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption brad-heading sfb tp-resizeme" data-x="25" data-y="center"
-                            data-voffset="-70" data-speed="500" data-start="500" data-easing="Power3.easeInOut"
-                            data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                            data-endspeed="300" style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
-                            {!! $item->name !!}
-                        </div>
-                    @endforeach
-
-                </li>
-            </ul>
-            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;">
-            </div>
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            @foreach ($banners as $item)
+                <div class="slide">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                    {{-- <div class="slide-caption">
+          <h2>{{ $item->name }}</h2>
+        </div> --}}
+                </div>
+            @endforeach
         </div>
     </div>
+
     <!-- END REVOLUTION SLIDER -->
     <!-- Rev Slider End -->
     <!--End Header -->
@@ -156,8 +185,7 @@
                                             </div>
                                         </div>
                                         <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
+                                            <div class="inner-content " data-animation-delay="0" data-animation-effect="">
                                                 <div class="feature_box no-content">
                                                     <span class="brad-icon " data-animation-delay="0"
                                                         data-animation-effect=""><i
@@ -174,8 +202,7 @@
                                             </div>
                                         </div>
                                         <div class="span">
-                                            <div class="inner-content " data-animation-delay="0"
-                                                data-animation-effect="">
+                                            <div class="inner-content " data-animation-delay="0" data-animation-effect="">
                                                 <div class="feature_box no-content">
                                                     <span class="brad-icon " data-animation-delay="0"
                                                         data-animation-effect=""><i
@@ -371,4 +398,55 @@
             </div>
         </section>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const slides = document.querySelectorAll('.slide');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            const slideInterval = 5000; // 5 detik
+
+            if (totalSlides <= 1) return; // tidak perlu slider jika hanya 1 gambar
+
+            function goToSlide(index) {
+                if (index >= totalSlides) currentIndex = 0;
+                else if (index < 0) currentIndex = totalSlides - 1;
+                else currentIndex = index;
+
+                const offset = -currentIndex * 100;
+                sliderTrack.style.transform = `translateX(${offset}%)`;
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            // Mulai otomatis
+            let autoSlide = setInterval(nextSlide, slideInterval);
+
+            // Opsional: hentikan otomatis saat user hover (di desktop)
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+            sliderContainer.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, slideInterval);
+            });
+
+            // Opsional: hentikan otomatis saat user menyentuh/slider (mobile)
+            let isTouching = false;
+            sliderContainer.addEventListener('touchstart', () => {
+                isTouching = true;
+                clearInterval(autoSlide);
+            });
+            sliderContainer.addEventListener('touchend', () => {
+                if (isTouching) {
+                    autoSlide = setInterval(nextSlide, slideInterval);
+                    isTouching = false;
+                }
+            });
+        });
+    </script>
 @endsection

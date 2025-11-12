@@ -2,30 +2,29 @@
 
 namespace App\Services;
 
-use App\Repositories\MenuProfileRepository;
-use App\Repositories\PelayananPublikRepository;
+use App\Repositories\SubPelayananPublikRepository;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 
 
-class PelayananPublikService
+class SubPelayananPublikService
 {
-    protected PelayananPublikRepository $repository;
+    protected SubPelayananPublikRepository $repo;
 
-    public function __construct(PelayananPublikRepository $repository)
+    public function __construct(SubPelayananPublikRepository $repo)
     {
-        $this->repository = $repository;
+        $this->repo = $repo;
     }
 
-    public function getAllPelayananPublik()
+    public function getAllSubPelayananPublik()
     {
-        return $this->repository->all();
+        return $this->repo->all();
     }
 
-    public function findPelayananPublik(string $id)
+    public function findSubPelayananPublik(string $id)
     {
-        return $this->repository->find($id);
+        return $this->repo->find($id);
     }
 
       protected function upload(string $directory, UploadedFile $file, string $filename = ""): string
@@ -57,37 +56,42 @@ class PelayananPublikService
         }
     }
 
-    public function createPelayananPublik(array $data)
+    public function createSubPelayananPublik(array $data)
     {
          if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
-            $data['image'] = $this->upload('pelayanan-publik', $data['image']);
+            $data['image'] = $this->upload('sub-pelayanan-publik', $data['image']);
         }
             $data['slug'] = Str::slug($data['name']);
 
-        return $this->repository->create($data);
+        return $this->repo->create($data);
     }
 
-    public function updatePelayananPublik(string $id, array $data)
+    public function updateSubPelayananPublik(string $id, array $data)
     {
-        $PelayananPublik = $this->repository->find($id);
+        $PelayananPublik = $this->repo->find($id);
 
         if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
             $this->deleteImage($PelayananPublik->image);
-            $data['image'] = $this->upload('pelayanan-publik', $data['image']);
+            $data['image'] = $this->upload('sub-pelayanan-publik', $data['image']);
         }
 
         if (isset($data['name'])) {
             $data['slug'] = Str::slug($data['name']);
         }
 
-        return $this->repository->update($PelayananPublik, $data);
+        return $this->repo->update($PelayananPublik, $data);
     }
 
-    public function deletePelayananPublik(string $id)
+    public function deleteSubPelayananPublik(string $id)
     {
-        $PelayananPublik = $this->repository->find($id);
+        $PelayananPublik = $this->repo->find($id);
         $this->deleteImage($PelayananPublik->image);
-        return $this->repository->delete($PelayananPublik);
+        return $this->repo->delete($PelayananPublik);
+    }
+
+    public function getAllPelayananPublik()
+    {
+        return $this->repo->getAllPelayananPublik();
     }
 }
 

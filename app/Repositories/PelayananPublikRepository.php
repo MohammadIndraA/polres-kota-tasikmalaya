@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Categories;
-use App\Models\MenuProfile;
 use App\Models\PelayananPublik;
 
 class PelayananPublikRepository
