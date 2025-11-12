@@ -65,9 +65,10 @@
                                                                         <a href="{{ route('berita-detail', $item->slug) }}">
                                                                             <div class="image">
                                                                                 <img width="1100" height="734"
-                                                                                    src="{{ asset('frontend/upload/blog1.jpg') }}"
+                                                                                    src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/upload/blog1.jpg') }}"
                                                                                     class="attachment-thumb-large wp-post-image"
                                                                                     alt="blog1" />
+
                                                                             </div>
                                                                         </a>
                                                                         <div class="post-text-container">
