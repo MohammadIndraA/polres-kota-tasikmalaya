@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app', ['title' => 'Home'])
+@extends('frontend.layouts.app')
 @section('styles')
     <style>
         .slider-container {
@@ -139,7 +139,7 @@
                                 <div class="column-text ">
                                 </div>
                                 <h5 class="title textcenter default bw-2px dh-2px divider-dark bc-dark dw-default color-default"
-                                    id="h5_c1fb_0"><span>POLRES KOTA TASIKMALAYA</span>
+                                    id="h5_c1fb_0"><span>POLRES TASIKMALAYA KOTA</span>
                                 </h5>
                                 <h1 class="title textcenter default bw-defaultpx dh-defaultpx divider-dark bc-default dw-default color-default"
                                     id="h1_c1fb_0"><span> Melayani dengan Hati Nurani</span>
@@ -324,19 +324,20 @@
                                 <div class="gap" style="height:20px;line-height:20px;">
                                 </div>
                                 <h2 class="title textleft default bw-defaultpx dh-defaultpx divider-dark bc-default dw-default color-default"
-                                    style="margin-bottom:0px"><span>MENGENAL SINGKAT POLRES KOTA TASIKMALAYA</span>
+                                    style="margin-bottom:0px"><span>MENGENAL SINGKAT POLRES TASIKMALAYA KOTA</span>
                                 </h2>
                                 <div class="hr border-small dh-2px alignleft hr-border-primary"
                                     style="margin-top:20px;margin-bottom:30px;">
                                     <span></span>
                                 </div>
                                 <div class="column-text ">
-                                    Polres Kota Tasikmalaya merupakan institusi kepolisian yang bertugas menjaga keamanan,
-                                    ketertiban, dan penegakan hukum di wilayah Kota Tasikmalaya, Jawa Barat. Dengan
+                                    Polres Tasikmalaya Kota merupaka Kotan institusi kepolisian yang bertugas menjaga
+                                    keamanan,
+                                    ketertiban, dan penegakan hukum di wilayah Tasikmalaya Kota, Jawa Barat. Dengan
                                     pendekatan profesional, humanis, dan responsif, Polres ini hadir sebagai mitra
                                     masyarakat dalam menciptakan lingkungan yang aman dan kondusif.
 
-                                    Mengusung semangat Polri Presisi, Polres Kota Tasikmalaya terus berinovasi dalam
+                                    Mengusung semangat Polri Presisi, Polres Tasikmalaya teru Kotas berinovasi dalam
                                     pelayanan publik, membangun sinergi lintas elemen, serta menegakkan hukum secara adil
                                     dan berimbang. Komitmen untuk mengayomi, melindungi, dan melayani menjadi landasan utama
                                     dalam setiap langkah dan kebijakan yang diambil.

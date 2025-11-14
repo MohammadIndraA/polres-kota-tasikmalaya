@@ -22,7 +22,7 @@
                 </ul>
             </li>
             <li class="menu-item"><a href="/berita">Berita</a></li>
-            <li class="menu-item"><a href="/kontak">Contact Us</a></li>
+            <li class="menu-item"><a href="/kontak">Kontak</a></li>
         </ul>
     </div>
     <!-- End Mobile Navigation -->
@@ -95,7 +95,7 @@
                                         </li>
                                     </ul>
                                     </li>
-                                    <li class="menu-item"><a href="/kontak">Contact Us</a></li>
+                                    <li class="menu-item"><a href="/kontak">Kontak</a></li>
                                     <li id="header-search-button"><a href="#" class="search-button"><i
                                                 class="fa-search"></i></a>
                                         <div id="header-search-panel">

@@ -1,4 +1,4 @@
-@extends('frontend/.layouts.app', ['title' => 'Berita Detail'])
+@extends('frontend/.layouts.app')
 @section('content')
     <!-- Static Page Titlebar -->
     <section id="titlebar"
@@ -104,7 +104,8 @@
                     </div>
 
                     {{-- sidebar --}}
-                    @include('frontend.layouts.sidebar-berita')
+                    <x-frontend.sidebar-berita />
+
 
                 </div>
             </div>

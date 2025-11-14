@@ -16,13 +16,16 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\MenuProfilController;
 use App\Http\Controllers\PelayananPublikController as ControllersPelayananPublikController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use Illuminate\Support\Facades\Response;
+
 
 
 // page home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // page berita
-Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}', [BeritaController::class, 'detail_berita'])->name('berita-detail');
 Route::get('/berita/kategori/{slug}', [BeritaController::class, 'berita_by_categories'])->name('berita-ketegori');
 
@@ -36,7 +39,7 @@ Route::get('/profil/{slug}', [MenuProfilController::class, 'index'])->name('prof
 Route::get('/pelayanan-publik/{slug}', [ControllersPelayananPublikController::class, 'index'])->name('pelayanan-publik-detail');
 
 // page kontak
-Route::get('/kontak', [KontakController::class, 'index']);
+Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -116,4 +119,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/sub-pelayanan-publik/{id}', [SubPelayananPublikController::class, 'update'])->name('sub-pelayanan-publik.update');
         Route::delete('/sub-pelayanan-publik/{id}/delete', [SubPelayananPublikController::class, 'destroy'])->name('sub-pelayanan-publik.destroy');
     });
+});
+
+// === Sitemap ===
+Route::get('/sitemap.xml', [HomeController::class, 'sitemap']);
+
+// === robots.txt ===
+Route::get('/robots.txt', function () {
+$content = "User-agent: *\n";
+$content .= "Disallow: /admin/\n";
+$content .= "Allow: /\n";
+$content .= "Sitemap: " . url('/sitemap.xml') . "\n";
+
+return response($content, 200)->header('Content-Type', 'text/plain');
 });

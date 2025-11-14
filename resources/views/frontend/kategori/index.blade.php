@@ -1,4 +1,4 @@
-@extends('frontend/.layouts.app', ['title' => 'Kategori'])
+@extends('frontend/.layouts.app')
 @section('content')
     <!-- Static Page Titlebar -->
     <section id="titlebar"
@@ -58,7 +58,7 @@
                                                             </div>
                                                             <img src="images/loader.gif" alt="" />
                                                         </div>
-                                                        @if ($posts->total() > 0)
+                                                        @if ($postByCategory->total() > 0)
                                                             <ul class="posts-grid row-fluid element-padding-medium element-vpadding-default posts-grid-bg-stroke"
                                                                 data-masonry="no">
                                                                 @foreach ($postByCategory as $item)
@@ -69,7 +69,7 @@
                                                                                 href="{{ route('berita-detail', $item->slug) }}">
                                                                                 <div class="image">
                                                                                     <img width="1100" height="734"
-                                                                                        src="{{ asset('frontend/upload/blog1.jpg') }}"
+                                                                                        src="{{ asset('storage/' . $item->image) }}"
                                                                                         class="attachment-thumb-large wp-post-image"
                                                                                         alt="blog1" />
                                                                                 </div>
@@ -102,7 +102,7 @@
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
-                                                            <div class='page-nav clearfix '>
+                                                            <div class='page-nav clearfix'>
                                                                 @if ($postByCategory->onFirstPage())
                                                                     <span>← </span>
                                                                 @else
@@ -133,7 +133,7 @@
                     </div>
 
                     {{-- sidebar --}}
-                    @include('frontend.layouts.sidebar-berita')
+                    <x-frontend.sidebar-berita />
 
                 </div>
             </div>

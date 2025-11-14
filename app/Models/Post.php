@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
+use RalphJSmit\Laravel\SEO\Support\Schemas\ArticleSchema;
 
 class Post extends Model
 {
@@ -53,19 +55,39 @@ class Post extends Model
     }
 
     public function scopeByCategoryAndSearch($query, $slug = null, $search = null)
-{
-    return $query->with('category')
-        ->when($slug, function ($q) use ($slug) {
-            $q->whereHas('category', function ($sub) use ($slug) {
-                $sub->where('slug', $slug);
+    {
+        return $query->with('category')
+            ->when($slug, function ($q) use ($slug) {
+                $q->whereHas('category', function ($sub) use ($slug) {
+                    $sub->where('slug', $slug);
+                });
+            })
+            ->when($search, function ($q) use ($search) {
+                $q->where(function ($sub) use ($search) {
+                    $sub->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                });
             });
-        })
-        ->when($search, function ($q) use ($search) {
-            $q->where(function ($sub) use ($search) {
-                $sub->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('content', 'like', '%' . $search . '%');
-            });
-        });
-}
+    }
+
+    // Metode wajib untuk Laravel SEO
+    public function getDynamicSEOData(): SEOData
+    {
+        return new SEOData(
+            title: $this->title,
+            description: \Illuminate\Support\Str::limit(
+                strip_tags($this->excerpt ?? $this->content ?? ''),
+                155,
+                '...'
+            ),
+            image: $this->image ? asset('storage/' . $this->image) : null,
+            schema: ArticleSchema::make()
+                ->title($this->title)
+                ->description($this->excerpt ?? '')
+                ->author('Polres Tasikmalaya Kota')
+                ->datePublished($this->created_at)
+                ->dateModified($this->updated_at)
+        );
+    }
 
 }
