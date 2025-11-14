@@ -33,7 +33,7 @@
                     class="form-input w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-2 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700"
                     placeholder="Password" required>
             </div>
-            <a href="/forgot-password" class="text-xs font-medium text-brand-500 underline ">Forget Password?</a>
+            <a href="#" class="text-xs font-medium text-brand-500 underline ">Forget Password?</a>
             <div class="block mt-3">
                 <label class="custom-label block dark:text-slate-300">
                     <div
