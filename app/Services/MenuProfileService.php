@@ -56,30 +56,59 @@ class MenuProfileService
         }
     }
 
-    public function createMenuProfile(array $data)
-    {
+        public function createMenuProfile(array $data)
+        {
+            if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
+                $data['image'] = $this->upload('menu-profile', $data['image']);
+            }
 
-        if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
-            $data['image'] = $this->upload('menu-profile', $data['image']);
-        }
+            // kalau dokumen berupa array hasil uploadMultiple, biarkan saja
+            // pastikan field di migration tipe JSON atau TEXT
+            // if (isset($data['dokumen']) && is_array($data['dokumen'])) {
+            //     $data['dokumen'] = json_encode($data['dokumen']); 
+            //     // atau langsung array kalau model cast ke json
+            // }
+
             $data['slug'] = Str::slug($data['name']);
-        return $this->repository->create($data);
-    }
 
-    public function updateMenuProfile(string $id, array $data)
-    {
-        $menuProfile = $this->repository->find($id);
-
-        if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
-            $this->deleteImage($menuProfile->image);
-            $data['image'] = $this->upload('menu-profile', $data['image']);
-        }
-        if (isset($data['name'])) {
-            $data['slug'] = Str::slug($data['name']);
+            return $this->repository->create($data);
         }
 
-        return $this->repository->update($menuProfile, $data);
-    }
+
+        public function updateMenuProfile(string $id, array $data)
+        {
+            $menuProfile = $this->repository->find($id);
+
+            // image
+            if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
+                $this->deleteImage($menuProfile->image);
+                $data['image'] = $this->upload('menu-profile', $data['image']);
+            }
+
+            // slug
+            if (isset($data['name'])) {
+                $data['slug'] = Str::slug($data['name']);
+            }
+
+            // dokumen: merge lama + baru
+            if (isset($data['dokumen']) && is_array($data['dokumen'])) {
+                $existing = $menuProfile->dokumen ?? [];
+                $merged   = array_merge($existing, $data['dokumen']);
+                $data['dokumen'] = array_values($merged); // reset index
+            } else {
+                $data['dokumen'] = $menuProfile->dokumen ?? [];
+            }
+
+            // hapus dokumen yang dipilih user
+            if (request()->has('deleted_files')) {
+                $filtered = array_diff($data['dokumen'], request()->deleted_files);
+                $data['dokumen'] = array_values($filtered); // reset index lagi
+            }
+
+            return $this->repository->update($menuProfile, $data);
+        }
+
+
 
     public function deleteMenuProfile(string $id)
     {

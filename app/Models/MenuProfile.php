@@ -20,6 +20,12 @@ class MenuProfile extends Model
         'status',
         'content',
         'image',
+        'dokumen'
     ];
+
+    protected $casts = [
+    'dokumen' => 'array',
+];
+
 
 }

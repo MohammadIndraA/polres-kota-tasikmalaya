@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SubPelayananPublikRequest;
 use App\Services\SubPelayananPublikService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 
+use function App\Helpers\uploadMultiple;
 
 class SubPelayananPublikController extends Controller
 {
@@ -73,6 +75,11 @@ class SubPelayananPublikController extends Controller
             $data['image'] = $request->file('image');
         }
 
+         // Simpan file dokumen multiple
+        if ($request->hasFile('dokumen')) {
+            $data['dokumen'] = uploadMultiple('dokumen', $request->file('dokumen'), 'dok');
+        }
+
         $this->service->createSubPelayananPublik($data);
 
         return redirect()->route('admin.sub-pelayanan-publik.index')->with('success', 'Data berhasil ditambahkan!');
@@ -97,6 +104,18 @@ class SubPelayananPublikController extends Controller
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image');
+        }
+
+         if ($request->hasFile('dokumen')) {
+            $data['dokumen'] = uploadMultiple('dokumen', $request->file('dokumen'), 'dok');
+        }
+
+
+         // hapus dokumen lama dari storage
+        if ($request->has('deleted_files')) {
+            foreach ($request->deleted_files as $path) {
+                Storage::disk('public')->delete($path);
+            }
         }
 
         $this->service->updateSubPelayananPublik($id, $data);

@@ -23,7 +23,7 @@ class HomeController extends Controller
             'pelayanan_publik' => $this->homeService->getAllPelayananPublik(),
             'SEOData' => new SEOData(
                 title: 'Website Resmi Polres Tasikmalaya Kota',
-                description: 'Portal resmi Polres Tasikmalaya Kota: berita terkini, pelayanan publik, profil institusi, dan informasi keamanan.',
+                description: 'Portal resmi Polres Tasikmalaya Kota berita terkini, pelayanan publik, profil institusi, dan informasi keamanan.',
             ),
         ]);
     }

@@ -21,8 +21,13 @@ class SubPelayananPublik extends Model
         'content',
         'image',
         'urutan',
-        'pelayanan_publik_id'
+        'pelayanan_publik_id',
+        'dokumen'
     ];
+
+     protected $casts = [
+    'dokumen' => 'array',
+];
 
     protected $with = ['pelayanan_publik'];
 

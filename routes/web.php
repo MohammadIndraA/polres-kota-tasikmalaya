@@ -18,6 +18,7 @@ use App\Http\Controllers\PelayananPublikController as ControllersPelayananPublik
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -37,6 +38,9 @@ Route::get('/profil/{slug}', [MenuProfilController::class, 'index'])->name('prof
 
 // pelayanan publik
 Route::get('/pelayanan-publik/{slug}', [ControllersPelayananPublikController::class, 'index'])->name('pelayanan-publik-detail');
+
+// sub pelayanan publik
+Route::get('/sub-pelayanan-publik/{slug}', [ControllersPelayananPublikController::class, 'sub_pelayanan'])->name('sub-pelayanan-publik-detail');
 
 // page kontak
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');

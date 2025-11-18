@@ -28,6 +28,7 @@ class MenuProfileRepository
         return $menuProfile;
     }
 
+
     public function delete(MenuProfile $menuProfile)
     {
         return $menuProfile->delete();

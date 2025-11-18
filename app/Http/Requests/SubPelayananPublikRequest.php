@@ -39,7 +39,10 @@ class SubPelayananPublikRequest extends FormRequest
             'content' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'urutan' => 'nullable|integer',
-            'pelayanan_publik_id' => 'required' 
+            'pelayanan_publik_id' => 'required', 
+
+            'dokumen' => 'nullable|array',
+            'dokumen.*' => 'file|mimes:jpg,jpeg,png,gif,pdf|max:2048',
         ];
     }
 
@@ -65,6 +68,11 @@ class SubPelayananPublikRequest extends FormRequest
             'image.max' => 'Ukuran gambar maksimal 2 MB.',
 
             'urutan.integer' => 'Urutan harus berupa angka.',
+
+             'dokumen.required' => 'Dokumen wajib diunggah.',
+            'dokumen.*.file' => 'Dokumen harus berupa file.',
+            'dokumen.*.mimes' => 'Format dokumen hanya boleh JPG, JPEG, PNG, GIF, atau PDF.',
+            'dokumen.*.max' => 'Ukuran dokumen maksimal 2 MB.',
         ];
     }
 }

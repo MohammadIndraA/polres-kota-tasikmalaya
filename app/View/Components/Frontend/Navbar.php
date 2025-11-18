@@ -18,15 +18,14 @@ class Navbar extends Component
 
     public function __construct()
     {
-        $this->pelayanan_publik = cache()->remember('navbar_pelayanan', 3600, function () {
-            return PelayananPublik::where('status', 'published')
-                ->orderBy('urutan', 'asc')
-                ->get();
-        });
+       // Ambil langsung dari database tanpa cache
+    $this->pelayanan_publik = PelayananPublik::where('status', 'published')
+        ->orderBy('urutan', 'asc')
+        ->get();
 
-        $this->menu_profil = cache()->remember('navbar_menu_profil', 3600, function () {
-            return MenuProfile::where('status', 'published')->get();
-        });
+    $this->menu_profil = MenuProfile::where('status', 'published')
+        ->get();
+
 
     }
 

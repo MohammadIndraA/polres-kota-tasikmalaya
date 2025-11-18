@@ -1,14 +1,4 @@
 @extends('layouts.app', ['title' => 'Form Post'])
-@section('styles')
-    <!-- Css -->
-    <link rel="stylesheet" href="{{ asset('design-system/assets/libs/filepond/filepond.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('design-system/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('design-system/assets/libs/vanillajs-datepicker/css/datepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('design-system/assets/libs/mobius1-selectr/selectr.min.css') }}">
-    <link href="{{ asset('design-system/assets/libs/prismjs/themes/prism-twilight.min.css') }}" type="text/css"
-        rel="stylesheet">
-@endsection
 @section('content')
     <form action="{{ isset($post) ? route('admin.post.update', $post->id) : route('admin.post.store') }}" method="POST"
         enctype="multipart/form-data">
@@ -22,8 +12,7 @@
             </div>
         @endif
 
-        <div
-            class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 justify-between">
+        <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 justify-between">
             <div
                 class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4 shadow-md bg-white dark:bg-gray-900">
                 <div class="w-full relative p-4">
@@ -42,26 +31,27 @@
 
                     <x-select name="status" label="Status" :options="$status" :value="isset($post) ? $post->status : null" :required="true" />
 
-                    {{-- image --}}
-                    <!-- Upload Gambar (Create & Edit dalam 1 blok) -->
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Gambar Sampul</label>
-                        <div id="drop-area"
-                            style="border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.3s;">
+                    {{-- Upload Gambar --}}
+                    <div class="mb-6">
+                        <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Gambar Sampul
+                        </label>
+
+                        <div id="drop-area-post"
+                            class="border-2 border-dashed border-gray-300 rounded-md p-6 text-center cursor-pointer transition-all hover:border-blue-400">
                             <p>📁 Seret & lepas gambar di sini, atau klik untuk pilih</p>
-                            <input type="file" name="image" id="image" class="d-none" accept="image/*">
+                            <input type="file" name="image" id="image-post" class="hidden" accept="image/*">
                         </div>
 
-                        <!-- Preview Gambar -->
-                        <div class="mt-2 text-center">
-                            <img id="image-preview"
-                                src="{{ isset($post) && $post->image ? asset('storage/' . $post->image) : '' }}"
-                                alt="Preview Gambar"
-                                style="max-width: 200px; max-height: 200px; display: {{ isset($post) && $post->image ? 'block' : 'none' }};">
+                        <div class="mt-4 text-center">
+                            <img id="image-preview-post"
+                                src="{{ isset($banner) && $banner->image ? asset('storage/' . $banner->image) : '' }}"
+                                alt="Preview Gambar" class="mx-auto rounded-md"
+                                style="max-width: 200px; max-height: 200px; {{ isset($banner) && $banner->image ? 'display: block;' : 'display: none;' }}">
                         </div>
 
                         @error('image')
-                            <div class="text-danger mt-1">{{ $message }}</div>
+                            <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -100,12 +90,7 @@
 @endsection
 @section('scripts')
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-    <script src="{{ asset('design-system/assets/libs/filepond/filepond.min.js') }}"></script>
-    <script
-        src="{{ asset('design-system/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}">
-    </script>
-    <script src="{{ asset('design-system/assets/libs/vanillajs-datepicker/js/datepicker-full.min.js') }}"></script>
-    <script src="{{ asset('design-system/assets/libs/mobius1-selectr/selectr.min.js') }}"></script>
+    <script src="{{ asset('js/uploader.js') }}"></script>
     <script>
         $(document).ready(function() {
 
@@ -113,80 +98,9 @@
 
         });
     </script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const dropArea = document.getElementById('drop-area');
-            const fileInput = document.getElementById('image');
-            const preview = document.getElementById('image-preview');
-
-            // Buka file dialog saat area diklik
-            dropArea.addEventListener('click', () => {
-                fileInput.click();
-            });
-
-            // Efek drag & drop
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, preventDefaults, false);
-            });
-
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropArea.addEventListener(eventName, highlight, false);
-            });
-
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, unhighlight, false);
-            });
-
-            function highlight() {
-                dropArea.style.borderColor = '#0d6efd';
-                dropArea.style.backgroundColor = '#e7f1ff';
-            }
-
-            function unhighlight() {
-                dropArea.style.borderColor = '#ccc';
-                dropArea.style.backgroundColor = '#fff';
-            }
-
-            // Handle drop
-            dropArea.addEventListener('drop', function(e) {
-                const dt = e.dataTransfer;
-                const file = dt.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    fileInput.files = dt.files;
-                    previewImage(file);
-                }
-            });
-
-            // Handle pilih file (klik)
-            fileInput.addEventListener('change', function() {
-                const file = this.files[0];
-                if (file) {
-                    previewImage(file);
-                } else {
-                    // Jika di edit dan user batal pilih, kembalikan ke gambar lama
-                    @if (isset($post) && $post->image)
-                        preview.src = "{{ asset('storage/' . $post->image) }}";
-                        preview.style.display = 'block';
-                    @else
-                        preview.style.display = 'none';
-                    @endif
-                }
-            });
-
-            function previewImage(file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
+            initImageUploader('drop-area-post', 'image-post', 'image-preview-post');
         });
     </script>
 @endsection

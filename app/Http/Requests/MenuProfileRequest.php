@@ -38,6 +38,9 @@ class MenuProfileRequest extends FormRequest
             'status' => 'required|in:draft,published,archived',
             'content' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'dokumen' => 'nullable|array',
+            'dokumen.*' => 'file|mimes:jpg,jpeg,png,gif,pdf|max:2048',
+
         ];
     }
 
@@ -60,6 +63,11 @@ class MenuProfileRequest extends FormRequest
             'image.image' => 'File yang diunggah harus berupa gambar.',
             'image.mimes' => 'Format gambar hanya boleh JPG, JPEG, atau PNG.',
             'image.max' => 'Ukuran gambar maksimal 2 MB.',
+
+            'dokumen.required' => 'Dokumen wajib diunggah.',
+            'dokumen.*.file' => 'Dokumen harus berupa file.',
+            'dokumen.*.mimes' => 'Format dokumen hanya boleh JPG, JPEG, PNG, GIF, atau PDF.',
+            'dokumen.*.max' => 'Ukuran dokumen maksimal 2 MB.',
         ];
     }
 }

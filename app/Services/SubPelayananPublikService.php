@@ -70,14 +70,31 @@ class SubPelayananPublikService
     {
         $PelayananPublik = $this->repo->find($id);
 
-        if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
-            $this->deleteImage($PelayananPublik->image);
-            $data['image'] = $this->upload('sub-pelayanan-publik', $data['image']);
-        }
+         // image
+            if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
+                $this->deleteImage($PelayananPublik->image);
+                $data['image'] = $this->upload('menu-profile', $data['image']);
+            }
 
-        if (isset($data['name'])) {
-            $data['slug'] = Str::slug($data['name']);
-        }
+            // slug
+            if (isset($data['name'])) {
+                $data['slug'] = Str::slug($data['name']);
+            }
+
+            // dokumen: merge lama + baru
+            if (isset($data['dokumen']) && is_array($data['dokumen'])) {
+                $existing = $menuProfile->dokumen ?? [];
+                $merged   = array_merge($existing, $data['dokumen']);
+                $data['dokumen'] = array_values($merged); // reset index
+            } else {
+                $data['dokumen'] = $menuProfile->dokumen ?? [];
+            }
+
+            // hapus dokumen yang dipilih user
+            if (request()->has('deleted_files')) {
+                $filtered = array_diff($data['dokumen'], request()->deleted_files);
+                $data['dokumen'] = array_values($filtered); // reset index lagi
+            }
 
         return $this->repo->update($PelayananPublik, $data);
     }

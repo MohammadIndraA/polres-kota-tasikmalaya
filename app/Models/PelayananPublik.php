@@ -22,4 +22,9 @@ class PelayananPublik extends Model
         'image',
         'urutan',
     ];
+
+    public function sub_pelayanan_publiks()
+    {
+        return $this->hasMany(SubPelayananPublik::class);
+    }
 }

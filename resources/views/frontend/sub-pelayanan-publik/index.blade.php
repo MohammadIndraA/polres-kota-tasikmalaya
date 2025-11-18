@@ -1,4 +1,4 @@
-@extends('frontend/.layouts.app')
+@extends('frontend.layouts.app')
 @section('styles')
     <style>
         .file-container {
@@ -54,7 +54,7 @@
                     <div class="row-fluid">
                         <div class="row-fluid">
                             <div class="titlebar-heading">
-                                <h1><span>Profil</span></h1>
+                                <h1><span>Pelayanan Publik</span></h1>
                                 <div class="hr hr-border-primary double-border border-small">
                                     <span></span>
                                 </div>
@@ -62,7 +62,7 @@
                             <div id="breadcrumbs">
                                 <span class="breadcrumb-title">You Are Here:</span><span><a
                                         href="/">Home</a></span><span class="separator">/</span><span
-                                    class="current">Profil</span>
+                                    class="current">Pelayanan Publik</span>
                             </div>
                         </div>
                     </div>
@@ -99,24 +99,24 @@
                                                         <div class="post-upper textcenter">
                                                             <h2><a href="#"
                                                                     title="Permalink to Standard post with preview picture">
-                                                                    {{ $menuprofil->name }} </a></h2>
+                                                                    {{ $sub_pelayananpublik->name }} </a></h2>
                                                         </div>
                                                         <div class="image hoverlay">
                                                             <a href="#">
                                                                 <img width="1100" height="734"
-                                                                    src="{{ $menuprofil->image ? asset('storage/' . $menuprofil->image) : asset('frontend/upload/blog1.jpg') }}"
+                                                                    src="{{ $sub_pelayananpublik->image ? asset('storage/' . $sub_pelayananpublik->image) : asset('frontend/upload/blog1.jpg') }}"
                                                                     class="attachment-fullwidth wp-post-image"
-                                                                    alt="{{ $menuprofil->name ?? 'blog1' }}" />
+                                                                    alt="{{ $sub_pelayananpublik->name ?? 'blog1' }}" />
                                                             </a>
                                                         </div>
                                                         <!-- post content -->
                                                         <div class="post-content">
-                                                            {!! $menuprofil->content !!}
+                                                            {!! $sub_pelayananpublik->content !!}
                                                         </div>
 
-                                                        @if (!empty($menuprofil->dokumen) && is_array($menuprofil->dokumen))
+                                                        @if (!empty($sub_pelayananpublik->dokumen) && is_array($sub_pelayananpublik->dokumen))
                                                             <div class="file-container">
-                                                                @foreach ($menuprofil->dokumen as $dok)
+                                                                @foreach ($sub_pelayananpublik->dokumen as $dok)
                                                                     <div class="file-card">
                                                                         @php
                                                                             $ext = strtolower(
@@ -143,8 +143,6 @@
                                                                 @endforeach
                                                             </div>
                                                         @endif
-
-
                                                         <div class="post-share-container">
                                                             <span class="post-share clearfix"><a class="share-label"
                                                                     href="#">Share</a>
@@ -175,26 +173,9 @@
                     {{-- sidebar --}}
                     <x-frontend.sidebar-berita />
 
+
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll(".pdf-viewer").forEach(function(el) {
-                const src = el.getAttribute("data-src");
-                if (src) {
-                    // Buat iframe untuk PDF
-                    const iframe = document.createElement("iframe");
-                    iframe.src = src;
-                    iframe.width = "100%";
-                    iframe.height = "600";
-                    iframe.style.border = "none";
-                    el.appendChild(iframe);
-                }
-            });
-        });
-    </script>
 @endsection

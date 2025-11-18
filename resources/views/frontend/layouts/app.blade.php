@@ -36,6 +36,10 @@
     <link rel="shortcut icon" href="{{ asset('frontend/images/logo-polda-1.png') }}" />
 
     <link rel="icon" href="{{ asset('frontend/images/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('frontend/images/favicon.png') }}" sizes="any">
+    <link rel="icon" href="{{ asset('frontend/images/favicon.png') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('frontend/images/favicon.png') }}">
+
 
     <link href='https:/fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
         type='text/css'>

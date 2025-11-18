@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Pelayanan Publik'])
+@extends('layouts.app', ['title' => 'Sub Pelayanan Publik'])
 @section('content')
     <div
         class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 bg-white shadow  dark:bg-[#06090f]">

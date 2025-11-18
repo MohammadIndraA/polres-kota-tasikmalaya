@@ -21,7 +21,7 @@ class HomeRepository
 
     public function getAllPelayananPublik()
     {
-        return PelayananPublik::latest()->get();
+        return PelayananPublik::with('sub_pelayanan_publiks')->latest()->get();
     }
 
     public function getAllPost()

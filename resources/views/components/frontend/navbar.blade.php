@@ -69,6 +69,35 @@
                                             </ul>
                                         </li>
                                         <li
+                                            class="menu-item menu-item-has-children menu-item-6812{{ Request::is('pelayanan-publik*') ? 'current-menu-ancestor current-menu-parent' : '' }}">
+                                            <a href="#">Pelayanan Publik</a>
+                                            <ul class="sub-menu">
+                                                @foreach ($pelayanan_publik as $item)
+                                                    @if ($item->sub_pelayanan_publiks->count())
+                                                        <li class="menu-item menu-item-has-children">
+                                                            <a
+                                                                href="{{ route('pelayanan-publik-detail', $item->slug) }}">{{ $item->name }}
+                                                                -></a>
+                                                            <ul class="sub-menu">
+                                                                @foreach ($item->sub_pelayanan_publiks as $it)
+                                                                    <li class="menu-item">
+                                                                        <a
+                                                                            href="{{ route('sub-pelayanan-publik-detail', $it->slug) }}">{{ $it->name }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </li>
+                                                    @else
+                                                        <li class="menu-item">
+                                                            <a
+                                                                href="{{ route('pelayanan-publik-detail', $item->slug) }}">{{ $item->name }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </li>
+
+                                        <li {{-- <li
                                             class="menu-item menu-item-has-children {{ Request::is('pelayanan-publik*') ? 'current-menu-ancestor current-menu-parent' : '' }}">
                                             <a href="#">Pelayanan Publik</a>
                                             <ul class="sub-menu ">
@@ -79,7 +108,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li
+                                        <li --}}
                                             class="menu-item {{ Request::is('berita') ? 'current-menu-ancestor current-menu-parent' : '' }}">
                                             <a href="/berita">Berita</a>
                                         </li>

@@ -7,8 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuProfileRequest;
 use App\Services\MenuProfileService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
+
+use function App\Helpers\uploadMultiple;
 
 class MenuProfileController extends Controller
 {
@@ -66,15 +69,20 @@ class MenuProfileController extends Controller
     public function store(MenuProfileRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = auth()->id();
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image');
+        }
+
+        // Simpan file dokumen multiple
+      if ($request->hasFile('dokumen')) {
+            $data['dokumen'] = uploadMultiple('dokumen', $request->file('dokumen'), 'dok');
         }
 
         $this->menuProfilService->createMenuProfile($data);
 
         return redirect()->route('admin.profil.index')->with('success', 'Data berhasil ditambahkan!');
     }
+
 
     public function show(string $id)
     {
@@ -96,10 +104,23 @@ class MenuProfileController extends Controller
             $data['image'] = $request->file('image');
         }
 
+        if ($request->hasFile('dokumen')) {
+            $data['dokumen'] = uploadMultiple('dokumen', $request->file('dokumen'), 'dok');
+        }
+
+        // hapus dokumen lama dari storage
+        if ($request->has('deleted_files')) {
+            foreach ($request->deleted_files as $path) {
+                Storage::disk('public')->delete($path);
+            }
+        }
+
         $this->menuProfilService->updateMenuProfile($id, $data);
 
         return redirect()->route('admin.profil.index')->with('success', 'Data berhasil diperbarui!');
     }
+
+
 
     public function destroy(string $id)
     {
