@@ -62,7 +62,7 @@
                                                                 <li id="post-138"
                                                                     class="post-138 post type-post status-publish format-standard has-post-thumbnail hentry category-creative tag-animation tag-architecture tag-creative tag-designing tag-illustration-2 tag-video post-grid-item span6">
                                                                     <div class="inner-content">
-                                                                        <a href="{{ route('berita-detail', $item->slug) }}">
+                                                                    <a href="{{ route('berita-detail', $item->slug) }}">
                                                                             <div class="image">
                                                                                 <img width="1100" height="734"
                                                                                     src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/upload/blog1.jpg') }}"

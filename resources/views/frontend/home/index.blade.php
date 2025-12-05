@@ -5,6 +5,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
+            /* Opsional: batasi tinggi maksimal di desktop jika perlu */
         }
 
         .slider-track {
@@ -20,26 +21,30 @@
 
         .slide img {
             width: 100%;
-            height: 80vh;
-            /* hanya untuk desktop */
-            object-fit: cover;
+            height: auto;
+            /* Penting: tinggi mengikuti rasio gambar */
             display: block;
+            object-fit: contain;
+            /* Pastikan gambar tidak terpotong */
+            /* Jika kamu ingin background putih di sekitar gambar yang tidak penuh, tambahkan: */
+            background: #fff;
         }
 
-        /* Untuk tablet dan HP: tampilkan seluruh gambar, tinggi otomatis */
-        @media (max-width: 768px) {
+        /* Jika tetap ingin tinggi tetap di desktop (opsional), batasi hanya di layar besar */
+        @media (min-width: 1024px) {
+            .slide img {
+                height: 80vh;
+                object-fit: cover;
+                /* Di desktop, cover boleh karena ruang cukup */
+            }
+        }
+
+        /* Untuk tablet & mobile: biarkan gambar utuh */
+        @media (max-width: 1023px) {
             .slide img {
                 height: auto;
-                /* agar tidak dipotong */
                 max-height: none;
-                /* hapus batasan tinggi */
                 object-fit: contain;
-                /* opsional: jika ingin pastikan seluruh gambar terlihat */
-            }
-
-            /* Opsional: beri padding atas/bawah jika perlu jarak */
-            .slider-container {
-                max-height: none;
             }
         }
     </style>
@@ -51,9 +56,6 @@
             @foreach ($banners as $item)
                 <div class="slide">
                     <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
-                    {{-- <div class="slide-caption">
-          <h2>{{ $item->name }}</h2>
-        </div> --}}
                 </div>
             @endforeach
         </div>
@@ -351,45 +353,58 @@
             </div>
         </section>
 
-        <section id="section_416941510"
-            class="section content-box section-border-no section-bborder-no section-height-content section-bgtype-image section-fixed-background-no section-bgstyle-stretch section-triangle-no triangle-location-top parallax-section-no section-overlay-no section-overlay-dot-no "
-            style="padding-top:90px;padding-bottom:100px;background-color:#ffffff;" data-video-ratio=""
+        <section id="section_1539711467"
+            class="section_2 section content-box section-border-no section-bborder-no section-height-content section-bgtype-image section-fixed-background-no section-bgstyle-stretch section-triangle-yes triangle-location-top parallax-section-no section-overlay-no section-overlay-dot-no "
+            style="padding-top:80px;padding-bottom:70px;background-color:#ffffff;" data-video-ratio=""
             data-parallax-speed="1">
             <div class="section-overlay" style="">
             </div>
             <div class="container section-content">
                 <div class="row-fluid">
-                    <div class="row-fluid equal-cheight-no element-padding-default element-vpadding-default">
+                    <div class="row-fluid equal-cheight-no element-padding-default element-vpadding-medium">
                         <div class="section-column span12" style="">
                             <div class="inner-content content-box textnone"
                                 style="padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;">
-                                <h3 class="title textcenter default bw-2px dh-2px divider-dark bc-dark dw-default color-default"
-                                    style="margin-bottom:0px"><span>Bersama untuk Keamanan Kota</span>
+                                <h3 class="title textcenter style1 bw-defaultpx dh-defaultpx divider-primary bc-default dw-default color-default"
+                                    style="margin-bottom:45px"><span>Berita Terbaru</span>
                                 </h3>
-                                <div class="hr border-small dh-2px aligncenter hr-border-primary"
-                                    style="margin-top:15px;margin-bottom:45px;">
-                                    <span></span>
-                                </div>
-                                <div class="quotes-slider-container bx-carousel-container navigation-align-side"
-                                    data-navigation="no" data-effect="horizontal" data-autoplay="no"
-                                    data-interval="5000" data-pagination="yes">
-                                    <span class="carousel-next"></span><span class="carousel-prev"></span>
-                                    <ul class="quotes-slider bx-fake-slider">
-                                        <li class="quote-slider-item">
-                                            <div class="quote-logo">
+                                <div class="carousel-container portfolio-carousel posts-carousel-container pagination-yes navigation-yes"
+                                    data-navigation="yes" data-autoplay="no">
+                                    <a class="bx-next" href="#"></a><a class="bx-prev" href="#"></a>
+                                    <div class="pagination">
+                                    </div>
+                                    <div class="carouel-outer clearfix">
+                                        <div class="carousel-wrapper carousel-padding-default">
+                                            <div class="row posts-grid carousel-items posts-carousel columns-3"
+                                                data-columns="3">
+                                                @foreach ($posts as $item)
+                                                    <div class="carousel-item span">
+                                                        <div class="image hoverlay">
+                                                            <a href="{{ route('berita-detail', $item->slug) }}"
+                                                                data-gal="prettyPhoto[posts]"><img
+                                                                    src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/upload/blog1.jpg') }}"
+                                                                    alt="Standard post with preview picture"
+                                                                    style="height: 250px;" /></a>
+                                                        </div>
+                                                        <div class="post-text-container">
+                                                            <h4><a
+                                                                    href="{{ route('berita-detail', $item->slug) }}">{{ $item->category->name }}</a>
+                                                            </h4>
+                                                            <p class="excerpt">
+                                                                {{ $item->excerpt }} [&hellip;]
+                                                            </p>
+                                                            <div class="post-bottom">
+                                                                <div class="post-meta-data">
+                                                                    <span><a
+                                                                            href="{{ route('berita-detail', $item->slug) }}">
+                                                                            {{ $item->created_at->format('F d, Y') }}</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                            <blockquote>
-                                                <q>
-
-                                                    Terima kasih atas kunjungan Anda.Dengan semangat Presisi, kami terus
-                                                    berinovasi demi membangun kepercayaan dan menciptakan lingkungan yang
-                                                    tertib dan kondusif Mari bersama wujudkan Tasikmalaya
-                                                    sebagai kota yang damai, aman, dan bermartabat untuk generasi hari ini
-                                                    dan masa depan.</q>
-                                            </blockquote>
-                                        </li>
-                                    </ul>
-                                    <div class="carousel-pagination">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

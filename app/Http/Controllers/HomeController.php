@@ -21,6 +21,7 @@ class HomeController extends Controller
         return view('frontend.home.index',[
             'banners' => $this->homeService->getAllBanners(),
             'pelayanan_publik' => $this->homeService->getAllPelayananPublik(),
+            'posts' => $this->homeService->getAllPost(),
             'SEOData' => new SEOData(
                 title: 'Website Resmi Polres Tasikmalaya Kota',
                 description: 'Portal resmi Polres Tasikmalaya Kota berita terkini, pelayanan publik, profil institusi, dan informasi keamanan.',

@@ -26,7 +26,7 @@ class HomeRepository
 
     public function getAllPost()
     {
-        return Post::with('category')->latest()->paginate(15);
+        return Post::with('category')->limit(6)->latest()->get();
     }
 
     
