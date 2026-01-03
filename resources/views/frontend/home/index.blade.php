@@ -380,8 +380,8 @@
                                                 @foreach ($posts as $item)
                                                     <div class="carousel-item span">
                                                         <div class="image hoverlay">
-                                                            <a href="{{ route('berita-detail', $item->slug) }}"
-                                                                data-gal="prettyPhoto[posts]"><img
+                                                            <a href="{{ route('berita-detail', $item->slug) }}">
+                                                                <img
                                                                     src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/upload/blog1.jpg') }}"
                                                                     alt="Standard post with preview picture"
                                                                     style="height: 250px;" /></a>
